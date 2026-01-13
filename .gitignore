@@ -25,21 +25,41 @@ FirebaseCrashlytics*
 **/GoogleServices*.plist
 **/google-services*.json
 
-Assets/ExternalDependencyManager/*
+# Firebase SDK main folders
+Assets/Firebase/
+Assets/Plugins/Firebase/
+
+# Firebase modules
+Assets/Firebase.Auth/
+Assets/Firebase.Database/
+Assets/Firebase.Storage/
+Assets/Firebase.Analytics/
+Assets/Firebase.Extensions/
+Assets/Firebase.Platform/
+Assets/Firebase.Editor/
+
+# Dependency manager
+Assets/ExternalDependencyManager/
 Assets/GeneratedLocalRepo/
 Assets/Plugins/Android/*resolver*/
 Assets/Plugins/Android/AndroidManifest.xml
 
+# -------------------------
 # Android / Gradle
+# -------------------------
 .gradle/
 *.apk
 *.aab
 *.keystore
 
+# -------------------------
 # iOS
+# -------------------------
 DerivedData/
 Pods/
 
+# -------------------------
 # OS trash
+# -------------------------
 .DS_Store
 Thumbs.db
