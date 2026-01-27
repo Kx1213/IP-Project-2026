@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Anchor
+  - Food
+  - Knife
+  - Chopped
   layers:
   - Default
   - TransparentFX
