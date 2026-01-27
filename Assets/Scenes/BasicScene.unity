@@ -2654,7 +2654,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 915414590}
         m_TargetAssemblyTypeName: AuthenticationManager, Assembly-CSharp
-        m_MethodName: Login
+        m_MethodName: SignUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
