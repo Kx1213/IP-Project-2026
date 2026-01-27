@@ -15,9 +15,9 @@ public class ChopFood : MonoBehaviour
 
     private GameObject choppedFoodSpawned;
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision other)
     {
-        if(collision.collider.CompareTag("Knife"))
+        if(other.collider.CompareTag("Knife"))
         {   
             for(int i = 0; i < choppedPieces; i++) //spawn indicated number of food pieces when chopped
             {

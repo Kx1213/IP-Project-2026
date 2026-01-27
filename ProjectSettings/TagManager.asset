@@ -7,7 +7,9 @@ TagManager:
   - Anchor
   - Food
   - Knife
-  - Chopped
+  - rightFood
+  - wrongFood
+  - mix
   layers:
   - Default
   - TransparentFX
