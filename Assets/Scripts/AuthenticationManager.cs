@@ -57,11 +57,17 @@ public class AuthenticationManager : MonoBehaviour
         signUpPanel.SetActive(true);
     }
 
+    public void HideAllPanels()
+    {
+        loginPanel.SetActive(false);
+        signUpPanel.SetActive(false);
+    }
+
     // =======================
     // LOGIN
     // =======================
 
-    public void Login()
+    public async void Login()
     {
         string email = loginEmailInput.text;
         string password = loginPasswordInput.text;
@@ -72,27 +78,29 @@ public class AuthenticationManager : MonoBehaviour
             return;
         }
 
-        auth.SignInWithEmailAndPasswordAsync(email, password)
-            .ContinueWith(task =>
-            {
-                if (task.IsFaulted)
-                {
-                    Debug.LogError("Login failed: " + task.Exception);
-                    return;
-                }
+        try
+        {
+            var result = await auth.SignInWithEmailAndPasswordAsync(email, password);
+            FirebaseUser user = result.User;
 
-                FirebaseUser user = task.Result.User;
-                Debug.Log("Logged in as: " + user.DisplayName);
+            Debug.Log("Logged in as: " + user.DisplayName);
 
-                // TODO: Load VR scene here
-            });
+            // ✅ Hide login panel after success
+            loginPanel.SetActive(false);
+
+            // TODO: Load VR scene here
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Login failed: " + e);
+        }
     }
 
     // =======================
-    // SIGN UP (WITH USERNAME)
+    // SIGN UP
     // =======================
 
-    public void SignUp()
+    public async void SignUp()
     {
         string username = signUpUsernameInput.text;
         string email = signUpEmailInput.text;
@@ -106,28 +114,28 @@ public class AuthenticationManager : MonoBehaviour
             return;
         }
 
-        auth.CreateUserWithEmailAndPasswordAsync(email, password)
-            .ContinueWith(async task =>
+        try
+        {
+            var result = await auth.CreateUserWithEmailAndPasswordAsync(email, password);
+            FirebaseUser user = result.User;
+
+            UserProfile profile = new UserProfile
             {
-                if (task.IsFaulted)
-                {
-                    Debug.LogError("Sign up failed: " + task.Exception);
-                    return;
-                }
+                DisplayName = username
+            };
 
-                FirebaseUser user = task.Result.User;
+            await user.UpdateUserProfileAsync(profile);
 
-                // Set username as DisplayName
-                UserProfile profile = new UserProfile
-                {
-                    DisplayName = username
-                };
+            Debug.Log("Sign up successful: " + username);
 
-                await user.UpdateUserProfileAsync(profile);
+            // ✅ Hide sign-up panel after success
+            signUpPanel.SetActive(false);
 
-                Debug.Log("Sign up successful: " + username);
-
-                ShowLoginPanel();
-            });
+            // Optional: load scene or auto-login
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Sign up failed: " + e);
+        }
     }
 }
