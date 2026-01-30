@@ -13,11 +13,13 @@ public class AuthenticationManager : MonoBehaviour
     [Header("Login UI")]
     public TMP_InputField loginEmailInput;
     public TMP_InputField loginPasswordInput;
+    public TMP_Text loginErrorText;
 
     [Header("Sign Up UI")]
     public TMP_InputField signUpUsernameInput;
     public TMP_InputField signUpEmailInput;
     public TMP_InputField signUpPasswordInput;
+    public TMP_Text signUpErrorText;
 
     private FirebaseAuth auth;
 
@@ -33,7 +35,6 @@ public class AuthenticationManager : MonoBehaviour
         if (dependencyStatus == DependencyStatus.Available)
         {
             auth = FirebaseAuth.DefaultInstance;
-            Debug.Log("Firebase Auth initialized");
         }
         else
         {
@@ -49,18 +50,20 @@ public class AuthenticationManager : MonoBehaviour
     {
         loginPanel.SetActive(true);
         signUpPanel.SetActive(false);
+        ClearErrors();
     }
 
     public void ShowSignUpPanel()
     {
         loginPanel.SetActive(false);
         signUpPanel.SetActive(true);
+        ClearErrors();
     }
 
-    public void HideAllPanels()
+    void ClearErrors()
     {
-        loginPanel.SetActive(false);
-        signUpPanel.SetActive(false);
+        if (loginErrorText) loginErrorText.text = "";
+        if (signUpErrorText) signUpErrorText.text = "";
     }
 
     // =======================
@@ -69,12 +72,14 @@ public class AuthenticationManager : MonoBehaviour
 
     public async void Login()
     {
+        ClearErrors();
+
         string email = loginEmailInput.text;
         string password = loginPasswordInput.text;
 
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
         {
-            Debug.LogWarning("Login fields empty");
+            loginErrorText.text = "Please fill in all fields.";
             return;
         }
 
@@ -83,16 +88,11 @@ public class AuthenticationManager : MonoBehaviour
             var result = await auth.SignInWithEmailAndPasswordAsync(email, password);
             FirebaseUser user = result.User;
 
-            Debug.Log("Logged in as: " + user.DisplayName);
-
-            // ✅ Hide login panel after success
             loginPanel.SetActive(false);
-
-            // TODO: Load VR scene here
         }
-        catch (System.Exception e)
+        catch (FirebaseException e)
         {
-            Debug.LogError("Login failed: " + e);
+            loginErrorText.text = GetFirebaseErrorMessage(e);
         }
     }
 
@@ -102,6 +102,8 @@ public class AuthenticationManager : MonoBehaviour
 
     public async void SignUp()
     {
+        ClearErrors();
+
         string username = signUpUsernameInput.text;
         string email = signUpEmailInput.text;
         string password = signUpPasswordInput.text;
@@ -110,7 +112,7 @@ public class AuthenticationManager : MonoBehaviour
             string.IsNullOrEmpty(email) ||
             string.IsNullOrEmpty(password))
         {
-            Debug.LogWarning("Sign up fields empty");
+            signUpErrorText.text = "Please fill in all fields.";
             return;
         }
 
@@ -126,16 +128,38 @@ public class AuthenticationManager : MonoBehaviour
 
             await user.UpdateUserProfileAsync(profile);
 
-            Debug.Log("Sign up successful: " + username);
-
-            // ✅ Hide sign-up panel after success
             signUpPanel.SetActive(false);
-
-            // Optional: load scene or auto-login
         }
-        catch (System.Exception e)
+        catch (FirebaseException e)
         {
-            Debug.LogError("Sign up failed: " + e);
+            signUpErrorText.text = GetFirebaseErrorMessage(e);
+        }
+    }
+
+    // =======================
+    // ERROR TRANSLATION
+    // =======================
+
+    string GetFirebaseErrorMessage(FirebaseException e)
+    {
+        AuthError errorCode = (AuthError)e.ErrorCode;
+
+        switch (errorCode)
+        {
+            case AuthError.InvalidEmail:
+                return "Invalid email address.";
+            case AuthError.WrongPassword:
+                return "Incorrect password.";
+            case AuthError.UserNotFound:
+                return "Account does not exist.";
+            case AuthError.EmailAlreadyInUse:
+                return "Email is already registered.";
+            case AuthError.WeakPassword:
+                return "Password is too weak (min 6 characters).";
+            case AuthError.MissingEmail:
+                return "Email is required.";
+            default:
+                return "Authentication failed. Please try again.";
         }
     }
 }
