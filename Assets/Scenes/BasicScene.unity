@@ -205,8 +205,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -45.21862, y: 0, z: -64.06882, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -257,6 +257,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47748925}
   m_CullTransparentMesh: 1
+--- !u!1 &133229766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 133229768}
+  - component: {fileID: 133229767}
+  m_Layer: 0
+  m_Name: QuizController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &133229767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133229766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea2188a3268e7d048a4903ddfcbb72cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introLine: Class Begins
+  buttonAppearDelay: 1.5
+  panel: {fileID: 180392474}
+  mainText: {fileID: 47748927}
+  feedbackText: {fileID: 782701412}
+  startButton: {fileID: 1003547685}
+  answerButtons:
+  - {fileID: 417238250}
+  - {fileID: 2072738064}
+  - {fileID: 2117201119}
+  - {fileID: 436852704}
+  autoNextDelay: 1
+  panelHideDelay: 2
+--- !u!4 &133229768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133229766}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.774554, y: -4.7803555, z: -4.3771205}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &180392474
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,7 +325,6 @@ GameObject:
   - component: {fileID: 180392475}
   - component: {fileID: 180392477}
   - component: {fileID: 180392476}
-  - component: {fileID: 180392478}
   m_Layer: 5
   m_Name: PANEL
   m_TagString: Untagged
@@ -337,30 +393,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180392474}
   m_CullTransparentMesh: 1
---- !u!114 &180392478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 180392474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 679512e254f3613438da73eef9117585, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::QuizUIController
-  introLine: Class Begins
-  buttonAppearDelay: 1.5
-  mainText: {fileID: 47748927}
-  feedbackText: {fileID: 782701412}
-  startButton: {fileID: 1003547685}
-  answerButtons:
-  - {fileID: 417238250}
-  - {fileID: 2072738064}
-  - {fileID: 2117201119}
-  - {fileID: 436852704}
-  autoNext: 1
-  autoNextDelay: 1
 --- !u!1 &258969235
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,7 +702,7 @@ GameObject:
   - component: {fileID: 417238251}
   - component: {fileID: 417238250}
   m_Layer: 5
-  m_Name: option
+  m_Name: Option 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -791,7 +823,7 @@ GameObject:
   - component: {fileID: 436852705}
   - component: {fileID: 436852704}
   m_Layer: 5
-  m_Name: option (3)
+  m_Name: Option 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1290,8 +1322,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 11
+  m_fontSizeBase: 11
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1752,7 +1784,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 180392478}
+      - m_Target: {fileID: 133229767}
         m_TargetAssemblyTypeName: QuizUIController, Assembly-CSharp
         m_MethodName: StartQuiz
         m_Mode: 1
@@ -1802,6 +1834,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1003547683}
   m_CullTransparentMesh: 1
+--- !u!1 &1015762345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1015762347}
+  - component: {fileID: 1015762346}
+  m_Layer: 0
+  m_Name: Question Uploader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1015762346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015762345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f53f8b7f8fde7f4da1a3b96d7af65b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1015762347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015762345}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.774554, y: -4.7803555, z: -4.3771205}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1073707353
 GameObject:
   m_ObjectHideFlags: 0
@@ -2203,8 +2279,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 11
+  m_fontSizeBase: 11
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2339,8 +2415,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 11
+  m_fontSizeBase: 11
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2475,8 +2551,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 11
+  m_fontSizeBase: 11
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2540,7 +2616,7 @@ GameObject:
   - component: {fileID: 2072738065}
   - component: {fileID: 2072738064}
   m_Layer: 5
-  m_Name: option (1)
+  m_Name: Option 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2748,7 +2824,7 @@ GameObject:
   - component: {fileID: 2117201120}
   - component: {fileID: 2117201119}
   m_Layer: 5
-  m_Name: option (2)
+  m_Name: Option 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6971,3 +7047,5 @@ SceneRoots:
   - {fileID: 580975925}
   - {fileID: 4163700537004187123}
   - {fileID: 1073707357}
+  - {fileID: 1015762347}
+  - {fileID: 133229768}
