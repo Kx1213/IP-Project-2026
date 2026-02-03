@@ -1,8 +1,10 @@
 using UnityEngine;
 using Firebase;
 using Firebase.Auth;
+using Firebase.Database;
 using TMPro;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 public class AuthenticationManager : MonoBehaviour
 {
@@ -22,6 +24,7 @@ public class AuthenticationManager : MonoBehaviour
     public TMP_Text signUpErrorText;
 
     private FirebaseAuth auth;
+    private DatabaseReference db;
 
     async void Start()
     {
@@ -35,6 +38,7 @@ public class AuthenticationManager : MonoBehaviour
         if (dependencyStatus == DependencyStatus.Available)
         {
             auth = FirebaseAuth.DefaultInstance;
+            db = FirebaseDatabase.DefaultInstance.RootReference;
         }
         else
         {
@@ -85,9 +89,7 @@ public class AuthenticationManager : MonoBehaviour
 
         try
         {
-            var result = await auth.SignInWithEmailAndPasswordAsync(email, password);
-            FirebaseUser user = result.User;
-
+            await auth.SignInWithEmailAndPasswordAsync(email, password);
             loginPanel.SetActive(false);
         }
         catch (FirebaseException e)
@@ -118,15 +120,31 @@ public class AuthenticationManager : MonoBehaviour
 
         try
         {
+            // Create Auth account
             var result = await auth.CreateUserWithEmailAndPasswordAsync(email, password);
             FirebaseUser user = result.User;
 
+            // Set display name (Auth profile)
             UserProfile profile = new UserProfile
             {
                 DisplayName = username
             };
-
             await user.UpdateUserProfileAsync(profile);
+
+            // =======================
+            // SAVE USER DATA TO REALTIME DB (FIXED)
+            // =======================
+
+            string uid = user.UserId;
+
+            Dictionary<string, object> userData = new Dictionary<string, object>
+            {
+                { "username", username },
+                { "email", email },
+                { "points", 0 }
+            };
+
+            await db.Child("users").Child(uid).UpdateChildrenAsync(userData);
 
             signUpPanel.SetActive(false);
         }
