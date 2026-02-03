@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Firebase.Database;
+using Firebase.Auth;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -32,21 +33,28 @@ public class QuizUIController : MonoBehaviour
     [Header("Outro")]
     public float panelHideDelay = 2.0f;
 
+    [Header("Points")]
+    public int pointsPerCorrect = 100;
+
     DatabaseReference db;
+    FirebaseAuth auth;
+
     List<Question> allQuestions = new List<Question>();
     List<Question> quizQuestions = new List<Question>();
 
     int current = 0;
     int score = 0;
+    int earnedPoints = 0;
     bool answered = false;
     bool quizEnded = false;
 
     void Start()
     {
         db = FirebaseDatabase.DefaultInstance.RootReference;
+        auth = FirebaseAuth.DefaultInstance;
 
         HideAnswers();
-        ShowIntro();              
+        ShowIntro();
         LoadQuestionsFromRealtimeDB();
     }
 
@@ -108,6 +116,7 @@ public class QuizUIController : MonoBehaviour
 
         startButton.gameObject.SetActive(false);
         score = 0;
+        earnedPoints = 0;
         current = 0;
         quizEnded = false;
 
@@ -157,11 +166,16 @@ public class QuizUIController : MonoBehaviour
 
         var q = quizQuestions[current];
         bool correct = chosen == q.correctIndex;
-        if (correct) score++;
+
+        if (correct)
+        {
+            score++;
+            earnedPoints += pointsPerCorrect;
+        }
 
         if (feedbackText)
             feedbackText.text = correct
-                ? "Correct"
+                ? "+100 Points!\nCorrect"
                 : $"Wrong\nCorrect: {q.answers[q.correctIndex]}";
 
         foreach (var btn in answerButtons)
@@ -183,9 +197,33 @@ public class QuizUIController : MonoBehaviour
 
         mainText.text = "Class Ended";
         if (feedbackText)
-            feedbackText.text = $"Score: {score} / 5";
+            feedbackText.text = $"Score: {score} / 5\nPoints Earned: {earnedPoints}";
 
+        SavePointsToFirebase();
         Invoke(nameof(HidePanel), panelHideDelay);
+    }
+
+    void SavePointsToFirebase()
+    {
+        if (auth.CurrentUser == null)
+        {
+            Debug.LogError("User not logged in");
+            return;
+        }
+
+        string uid = auth.CurrentUser.UserId;
+        DatabaseReference pointsRef = db.Child("users").Child(uid).Child("points");
+
+        pointsRef.RunTransaction(mutableData =>
+        {
+            int currentPoints = 0;
+
+            if (mutableData.Value != null)
+                int.TryParse(mutableData.Value.ToString(), out currentPoints);
+
+            mutableData.Value = currentPoints + earnedPoints;
+            return TransactionResult.Success(mutableData);
+        });
     }
 
     void HidePanel()
