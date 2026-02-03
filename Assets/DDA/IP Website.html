@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Firebase Login, Profile & Leaderboard</title>
+
+  <!-- Firebase SDKs (v8) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      background: #4a90e2;
+      color: white;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h2 {
+      color: #4a90e2;
+      margin-bottom: 10px;
+    }
+
+    /* Login card styling */
+    #login {
+      max-width: 400px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Flex container for profile + leaderboard */
+    .main-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin: 20px;
+      gap: 20px;
+    }
+
+    .card {
+      flex: 1;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Profile section narrower */
+    #profile.card {
+      max-width: 300px;
+    }
+
+    /* Leaderboard wider */
+    .card.leaderboard {
+      flex: 2;
+    }
+
+    input[type="email"], input[type="password"], input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button {
+      background: #4a90e2;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      margin: 5px 0;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #357ab8;
+    }
+
+    #loginStatus {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #e74c3c;
+    }
+
+    /* Leaderboard styling */
+    #leaderboardList {
+      padding-left: 20px;
+    }
+
+    #leaderboardList li {
+      background: #f9f9f9;
+      margin: 5px 0;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+    }
+
+    /* Responsive: stack on small screens */
+    @media (max-width: 768px) {
+      .main-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>My Firebase Website</h1>
+
+<div id="login">
+  <h2>Login / Register</h2>
+  <input id="loginEmail" type="email" placeholder="Email"><br><br>
+  <input id="loginPassword" type="password" placeholder="Password"><br><br>
+  <button onclick="login()">Login</button>
+  <button onclick="register()">Register</button>
+  <p id="loginStatus"></p>
+</div>
+
+<hr>
+
+<div class="main-container">
+  <div id="profile" class="card" style="display:none;">
+    <h2>Profile</h2>
+    <p id="username"></p>
+    <p id="email"></p>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <div class="card leaderboard">
+    <h2>Leaderboard</h2>
+    <ol id="leaderboardList"></ol>
+  </div>
+</div>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBayHt3kyoFxvAiDjJsLtZOalY0_IfJRhw",
+    authDomain: "ip-project-2026.firebaseapp.com",
+    databaseURL: "https://ip-project-2026-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "ip-project-2026",
+    storageBucket: "ip-project-2026.appspot.com",
+    messagingSenderId: "161050100022",
+    appId: "1:161050100022:web:ff4d6673892fda025a3397"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+
+  const auth = firebase.auth();
+  const db = firebase.database();
+
+  function register() {
+    const email = loginEmail.value;
+    const password = loginPassword.value;
+
+    auth.createUserWithEmailAndPassword(email, password)
+      .then(res => {
+        const uid = res.user.uid;
+        return db.ref("users/" + uid).set({
+          email: email,
+          username: email.split("@")[0],
+          points: 0
+        });
+      })
+      .then(() => {
+        loginStatus.textContent = "Registered successfully!";
+      })
+      .catch(err => {
+        loginStatus.textContent = err.message;
+      });
+  }
+
+  function login() {
+    auth.signInWithEmailAndPassword(loginEmail.value, loginPassword.value)
+      .catch(err => {
+        loginStatus.textContent = err.message;
+      });
+  }
+
+  function logout() {
+    auth.signOut();
+  }
+
+  auth.onAuthStateChanged(user => {
+    if (user) {
+      loadProfile(user.uid);
+      document.getElementById("login").style.display = "none";
+      document.getElementById("profile").style.display = "block";
+    } else {
+      document.getElementById("login").style.display = "block";
+      document.getElementById("profile").style.display = "none";
+    }
+  });
+
+  function loadProfile(uid) {
+    db.ref("users/" + uid).once("value").then(snap => {
+      const u = snap.val();
+      if (!u) return;
+      username.textContent = "Username: " + u.username;
+      email.textContent = "Email: " + u.email;
+    });
+  }
+
+  db.ref("users").on("value", snap => {
+    const data = snap.val();
+    leaderboardList.innerHTML = "";
+    if (!data) return;
+
+    Object.values(data)
+      .sort((a,b) => (b.points || 0) - (a.points || 0))
+      .forEach(u => {
+        const li = document.createElement("li");
+        li.textContent = (u.username || "Unknown") + " - " + (u.points || 0) + " pts";
+        leaderboardList.appendChild(li);
+      });
+  });
+</script>
+
+</body>
+</html>
