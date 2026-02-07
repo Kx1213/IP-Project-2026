@@ -4,22 +4,23 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Anchor
-  - Food
+  - PotatoRaw
   - Knife
-  - rightFood
-  - wrongFood
-  - mix
+  - Brush
+  - Oil
+  - Anchor
+  - PotatoCooked
+  - hand
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - hand
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Food
+  - Tools
+  - TrayOnly
   - 
   - 
   - 
