@@ -23,6 +23,9 @@ public class AuthenticationManager : MonoBehaviour
     public TMP_InputField signUpPasswordInput;
     public TMP_Text signUpErrorText;
 
+    [Header("Door Lock")]
+    public DoorLockController door;
+
     private FirebaseAuth auth;
     private DatabaseReference db;
 
@@ -30,6 +33,10 @@ public class AuthenticationManager : MonoBehaviour
     {
         await InitializeFirebase();
         ShowLoginPanel();
+
+        // Lock door on start
+        if (door)
+            door.LockDoor();
     }
 
     async Task InitializeFirebase()
@@ -90,7 +97,12 @@ public class AuthenticationManager : MonoBehaviour
         try
         {
             await auth.SignInWithEmailAndPasswordAsync(email, password);
+
             loginPanel.SetActive(false);
+
+            // Unlock door after successful login
+            if (door)
+                door.UnlockDoor();
         }
         catch (FirebaseException e)
         {
@@ -124,17 +136,14 @@ public class AuthenticationManager : MonoBehaviour
             var result = await auth.CreateUserWithEmailAndPasswordAsync(email, password);
             FirebaseUser user = result.User;
 
-            // Set display name (Auth profile)
+            // Set display name
             UserProfile profile = new UserProfile
             {
                 DisplayName = username
             };
             await user.UpdateUserProfileAsync(profile);
 
-            // =======================
-            // SAVE USER DATA TO REALTIME DB (FIXED)
-            // =======================
-
+            // Save to Realtime Database
             string uid = user.UserId;
 
             Dictionary<string, object> userData = new Dictionary<string, object>
@@ -147,6 +156,10 @@ public class AuthenticationManager : MonoBehaviour
             await db.Child("users").Child(uid).UpdateChildrenAsync(userData);
 
             signUpPanel.SetActive(false);
+
+            // Unlock door after successful signup
+            if (door)
+                door.UnlockDoor();
         }
         catch (FirebaseException e)
         {
