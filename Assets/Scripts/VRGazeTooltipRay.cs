@@ -5,7 +5,7 @@ public class VRGazeTooltipRay : MonoBehaviour
 {
     [Header("Ray Settings")]
     public float rayDistance = 10f;
-    public LayerMask interactableLayer;
+    public LayerMask raycastLayers; // Use Interactable or Everything
 
     [Header("Dwell Settings")]
     public float dwellTime = 1.5f;
@@ -14,9 +14,9 @@ public class VRGazeTooltipRay : MonoBehaviour
     public TMP_Text tooltipText;
     public GameObject tooltipPanel;
 
-    GazeTooltipTarget currentTarget;
-    float gazeTimer = 0f;
-    bool tooltipShown = false;
+    private GazeTooltipTarget currentTarget;
+    private float gazeTimer = 0f;
+    private bool tooltipShown = false;
 
     void Start()
     {
@@ -29,35 +29,40 @@ public class VRGazeTooltipRay : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, rayDistance, interactableLayer))
+        if (Physics.Raycast(ray, out hit, rayDistance, raycastLayers))
         {
-            GazeTooltipTarget target = hit.collider.GetComponent<GazeTooltipTarget>();
+            GazeTooltipTarget target =
+                hit.collider.GetComponent<GazeTooltipTarget>();
 
             if (target != null)
             {
-                if (target == currentTarget)
-                {
-                    gazeTimer += Time.deltaTime;
-
-                    if (gazeTimer >= dwellTime && !tooltipShown)
-                    {
-                        ShowTooltip(target.displayName);
-                        tooltipShown = true;
-                    }
-                }
-                else
-                {
-                    currentTarget = target;
-                    gazeTimer = 0f;
-                    tooltipShown = false;
-                    HideTooltip();
-                }
-
+                HandleGaze(target);
                 return;
             }
         }
 
         ResetGaze();
+    }
+
+    void HandleGaze(GazeTooltipTarget target)
+    {
+        if (target == currentTarget)
+        {
+            gazeTimer += Time.deltaTime;
+
+            if (gazeTimer >= dwellTime && !tooltipShown)
+            {
+                ShowTooltip(target.displayName);
+                tooltipShown = true;
+            }
+        }
+        else
+        {
+            currentTarget = target;
+            gazeTimer = 0f;
+            tooltipShown = false;
+            HideTooltip();
+        }
     }
 
     void ShowTooltip(string text)

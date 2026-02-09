@@ -1665,7 +1665,7 @@ GameObject:
   - component: {fileID: 29570780}
   - component: {fileID: 29570779}
   - component: {fileID: 29570784}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Knife
   m_TagString: Knife
   m_Icon: {fileID: 0}
@@ -8898,7 +8898,7 @@ GameObject:
   - component: {fileID: 62238275}
   - component: {fileID: 62238274}
   - component: {fileID: 62238279}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Shaker
   m_TagString: SaltShaker
   m_Icon: {fileID: 0}
@@ -11111,7 +11111,7 @@ GameObject:
   - component: {fileID: 119530412}
   - component: {fileID: 119530411}
   - component: {fileID: 119530416}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: rawpotaot
   m_TagString: Potato
   m_Icon: {fileID: 0}
@@ -23160,7 +23160,7 @@ GameObject:
   - component: {fileID: 432721992}
   - component: {fileID: 432721991}
   - component: {fileID: 432721995}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: SlicedPotatoCooked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34091,7 +34091,7 @@ GameObject:
   - component: {fileID: 672372460}
   - component: {fileID: 672372459}
   - component: {fileID: 672372464}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Tray
   m_TagString: Tray
   m_Icon: {fileID: 0}
@@ -34950,7 +34950,7 @@ GameObject:
   - component: {fileID: 700969705}
   - component: {fileID: 700969704}
   - component: {fileID: 700969709}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: PastryBrush
   m_TagString: Brush
   m_Icon: {fileID: 0}
@@ -48435,6 +48435,7 @@ MonoBehaviour:
   OnStepChanged:
     m_PersistentCalls:
       m_Calls: []
+  pointsPerStep: 200
 --- !u!4 &1154159688
 Transform:
   m_ObjectHideFlags: 0
@@ -54022,7 +54023,7 @@ GameObject:
   - component: {fileID: 1262960682}
   - component: {fileID: 1262960681}
   - component: {fileID: 1262960684}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Plate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63822,7 +63823,7 @@ GameObject:
   - component: {fileID: 1494304083}
   - component: {fileID: 1494304082}
   - component: {fileID: 1494304087}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: SlicedPotato
   m_TagString: Potato
   m_Icon: {fileID: 0}
@@ -64634,7 +64635,7 @@ GameObject:
   - component: {fileID: 1530251447}
   - component: {fileID: 1530251446}
   - component: {fileID: 1530251449}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: CuttingBoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83671,10 +83672,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayDistance: 10
-  interactableLayer:
+  raycastLayers:
     serializedVersion: 2
-    m_Bits: 512
-  dwellTime: 1.5
+    m_Bits: 4294967295
+  dwellTime: 2
   tooltipText: {fileID: 1108738695122694107}
   tooltipPanel: {fileID: 5656335470519680093}
 --- !u!4 &2044728702 stripped
@@ -91794,7 +91795,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 67606980935959541, guid: b4c3bad5481355a41a24df00a78ea583, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2079809697531413590, guid: b4c3bad5481355a41a24df00a78ea583, type: 3}
       propertyPath: m_LocalPosition.x
@@ -91838,7 +91839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2792305539466003940, guid: b4c3bad5481355a41a24df00a78ea583, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7086418310346362930, guid: b4c3bad5481355a41a24df00a78ea583, type: 3}
       propertyPath: m_Name
@@ -91846,11 +91847,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7429346075531377221, guid: b4c3bad5481355a41a24df00a78ea583, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7959739945353070307, guid: b4c3bad5481355a41a24df00a78ea583, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
