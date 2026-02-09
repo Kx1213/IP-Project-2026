@@ -38448,6 +38448,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c338003adc1ed42ec9e3fc0859e246c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabInteractable: {fileID: 0}
+  rb: {fileID: 0}
+  hinge: {fileID: 0}
 --- !u!1001 &930670197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54153,11 +54156,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806329115733545878, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.67
+      value: 8.31
       objectReference: {fileID: 0}
     - target: {fileID: 8806329115733545878, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8806329115733545878, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_LocalRotation.x
@@ -54165,7 +54168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806329115733545878, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8806329115733545878, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_LocalRotation.z
@@ -54177,7 +54180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806329115733545878, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8806329115733545878, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -59131,6 +59134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c338003adc1ed42ec9e3fc0859e246c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabInteractable: {fileID: 0}
+  rb: {fileID: 0}
+  hinge: {fileID: 0}
 --- !u!1 &1518133101
 GameObject:
   m_ObjectHideFlags: 0
@@ -80824,6 +80830,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c338003adc1ed42ec9e3fc0859e246c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabInteractable: {fileID: 0}
+  rb: {fileID: 0}
+  hinge: {fileID: 0}
 --- !u!1001 &2106827776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81098,7 +81107,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Door
---- !u!114 &2133775710
+--- !u!114 &2133775712 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1306034351290462048, guid: b4c3bad5481355a41a24df00a78ea583, type: 3}
+  m_PrefabInstance: {fileID: 3254661196750008323}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133775700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!59 &2133775713 stripped
+HingeJoint:
+  m_CorrespondingSourceObject: {fileID: 4917566616967331894, guid: b4c3bad5481355a41a24df00a78ea583, type: 3}
+  m_PrefabInstance: {fileID: 3254661196750008323}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &2133775714 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 5597839323951880883, guid: b4c3bad5481355a41a24df00a78ea583, type: 3}
+  m_PrefabInstance: {fileID: 3254661196750008323}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2133775718
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -81110,6 +81140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c338003adc1ed42ec9e3fc0859e246c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabInteractable: {fileID: 2133775712}
+  rb: {fileID: 2133775714}
+  hinge: {fileID: 2133775713}
 --- !u!1001 &2141183289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83492,7 +83525,7 @@ PrefabInstance:
       addedObject: {fileID: 2133775702}
     - targetCorrespondingSourceObject: {fileID: 67606980935959541, guid: b4c3bad5481355a41a24df00a78ea583, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2133775710}
+      addedObject: {fileID: 2133775718}
     - targetCorrespondingSourceObject: {fileID: 2792305539466003940, guid: b4c3bad5481355a41a24df00a78ea583, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2106810061}
@@ -83655,7 +83688,7 @@ MonoBehaviour:
   signUpEmailInput: {fileID: 4118470679802307023}
   signUpPasswordInput: {fileID: 1446044834722992214}
   signUpErrorText: {fileID: 1012130217560477250}
-  door: {fileID: 0}
+  door: {fileID: 2133775718}
 --- !u!222 &3445637827614540318
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -1,53 +1,69 @@
 using UnityEngine;
-#if UNITY_XR_INTERACTION_TOOLKIT
-using UnityEngine.XR.Interaction.Toolkit;
-#endif
+
 
 public class DoorLockController : MonoBehaviour
 {
-    private Rigidbody rb;
+    [Header("Door Components")]
+    public UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable grabInteractable;
+    public Rigidbody rb;
+    public HingeJoint hinge;
 
-#if UNITY_XR_INTERACTION_TOOLKIT
-    private XRGrabInteractable grab;
-#endif
+    private JointLimits lockedLimits;
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        if (!rb) rb = GetComponent<Rigidbody>();
+        if (!hinge) hinge = GetComponent<HingeJoint>();
+        if (!grabInteractable) grabInteractable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
 
-#if UNITY_XR_INTERACTION_TOOLKIT
-        grab = GetComponent<XRGrabInteractable>();
-#endif
-
-        LockDoor();
+        // Save locked hinge state (door cannot rotate)
+        lockedLimits = hinge.limits;
+        lockedLimits.min = 0f;
+        lockedLimits.max = 0f;
     }
 
-    // Door blocks player but cannot move
+    // =======================
+    // LOCK / UNLOCK
+    // =======================
+
     public void LockDoor()
     {
+        // Disable grabbing
+        if (grabInteractable)
+            grabInteractable.enabled = false;
+
+        // Freeze door completely
         if (rb)
         {
-            rb.isKinematic = false; // KEEP physics enabled
-            rb.constraints = RigidbodyConstraints.FreezeAll; // FREEZE movement
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
         }
 
-#if UNITY_XR_INTERACTION_TOOLKIT
-        if (grab)
-            grab.enabled = false; // cannot grab
-#endif
+        // Lock hinge rotation
+        if (hinge)
+        {
+            hinge.useLimits = true;
+            hinge.limits = lockedLimits;
+        }
     }
 
-    // Door becomes interactable again
     public void UnlockDoor()
     {
+        // Enable grabbing
+        if (grabInteractable)
+            grabInteractable.enabled = true;
+
+        // Unfreeze door (allow hinge movement)
         if (rb)
         {
-            rb.constraints = RigidbodyConstraints.None; // allow movement
+            rb.constraints = RigidbodyConstraints.None;
         }
 
-#if UNITY_XR_INTERACTION_TOOLKIT
-        if (grab)
-            grab.enabled = true;
-#endif
+        // Restore hinge rotation
+        if (hinge)
+        {
+            hinge.useLimits = false;
+        }
     }
 }
