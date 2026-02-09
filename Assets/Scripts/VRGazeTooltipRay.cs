@@ -5,7 +5,7 @@ public class VRGazeTooltipRay : MonoBehaviour
 {
     [Header("Ray Settings")]
     public float rayDistance = 10f;
-    public LayerMask raycastLayers; // Use Interactable or Everything
+    public LayerMask raycastLayers; // Include Interactable or Everything
 
     [Header("Dwell Settings")]
     public float dwellTime = 1.5f;
@@ -29,10 +29,11 @@ public class VRGazeTooltipRay : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
+        // Raycast using the assigned layers
         if (Physics.Raycast(ray, out hit, rayDistance, raycastLayers))
         {
-            GazeTooltipTarget target =
-                hit.collider.GetComponent<GazeTooltipTarget>();
+            // Try to get the GazeTooltipTarget component
+            GazeTooltipTarget target = hit.collider.GetComponent<GazeTooltipTarget>();
 
             if (target != null)
             {
@@ -41,6 +42,7 @@ public class VRGazeTooltipRay : MonoBehaviour
             }
         }
 
+        // Nothing hit → reset gaze
         ResetGaze();
     }
 

@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Kx ITD Deliverable.unity
     guid: 10e27c7a4b513c245b4e63d26a130eff
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 89aaf5bfdf846b447aaae3613adcc7aa
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameScene 1.unity
     guid: 8061d454a8abd6e4bb6705653c8405d7
   m_configObjects:
