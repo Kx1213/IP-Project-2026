@@ -11,6 +11,13 @@ TagManager:
   - Anchor
   - PotatoCooked
   - hand
+  - Chopped
+  - Food
+  - bruhs
+  - SaltShaker
+  - Parsley
+  - Potato
+  - Tray
   layers:
   - Default
   - TransparentFX
