@@ -2,17 +2,21 @@ using UnityEngine;
 
 public class FaceCamera : MonoBehaviour
 {
-    Camera cam;
+    Transform cam;
 
     void Start()
     {
-        cam = Camera.main;
+        if (Camera.main != null)
+            cam = Camera.main.transform;
     }
 
     void LateUpdate()
     {
         if (cam == null) return;
 
-        transform.LookAt(transform.position + cam.transform.forward);
+        Vector3 direction = transform.position - cam.position;
+        direction.y = 0f; // optional: keeps UI upright
+
+        transform.rotation = Quaternion.LookRotation(direction);
     }
 }
