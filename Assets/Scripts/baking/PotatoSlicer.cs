@@ -2,41 +2,51 @@ using UnityEngine;
 
 public class PotatoSlicer : MonoBehaviour
 {
+    [Header("References")]
     public CookingStepManager manager;
-
-    [Header("Slice Requirement")]
-    public int slicesNeeded = 10;
-    private int slicesDone;
-    private bool sliced;
-
-    [Header("Prefab Swap")]
     public GameObject cutPotatoPrefab;
-    public Transform spawnPoint; // optional
+    public Transform spawnPoint;
+
+    [Header("Slice Settings")]
+    public int slicesNeeded = 10;
+
+    private int slicesDone;
+    private bool completed;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (sliced) return;
+        if (completed) return;
 
-        if (!manager.IsStep(CookingStepManager.Step.Slice5mmDontCutThrough))
+        // Step gate
+        if (!manager || !manager.IsStep(CookingStepManager.Step.Slice5mmDontCutThrough))
             return;
 
+        // Only knife can cut
         if (!other.CompareTag("Knife"))
             return;
 
         slicesDone++;
-        Debug.Log($"Slicing {slicesDone}/{slicesNeeded}");
+        Debug.Log($"Slice {slicesDone}/{slicesNeeded}");
 
         if (slicesDone >= slicesNeeded)
         {
-            sliced = true;
-
-            manager.AdvanceStep(CookingStepManager.Step.Slice5mmDontCutThrough);
-
-            Vector3 pos = spawnPoint ? spawnPoint.position : transform.position;
-            Quaternion rot = spawnPoint ? spawnPoint.rotation : transform.rotation;
-
-            Instantiate(cutPotatoPrefab, pos, rot);
-            Destroy(gameObject);
+            completed = true;
+            FinishCutting();
         }
+    }
+
+    private void FinishCutting()
+    {
+        // Advance recipe step
+        manager.AdvanceStep(CookingStepManager.Step.Slice5mmDontCutThrough);
+
+        // Spawn sliced potato
+        Vector3 pos = spawnPoint ? spawnPoint.position : transform.parent.position;
+        Quaternion rot = spawnPoint ? spawnPoint.rotation : transform.parent.rotation;
+
+        Instantiate(cutPotatoPrefab, pos, rot);
+
+        // Destroy RAW potato (parent)
+        Destroy(transform.parent.gameObject);
     }
 }
