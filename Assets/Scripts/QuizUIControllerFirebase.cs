@@ -36,6 +36,13 @@ public class QuizUIController : MonoBehaviour
     [Header("Points")]
     public int pointsPerCorrect = 100;
 
+    [Header("Doors unlocked after quiz")]
+    public DoorLockController[] doorsToUnlock;   // 🔒🔒 multiple doors
+
+    [Header("Instruction UI")]
+    public InstructionUI instructionUI;
+
+
     DatabaseReference db;
     FirebaseAuth auth;
 
@@ -53,10 +60,24 @@ public class QuizUIController : MonoBehaviour
         db = FirebaseDatabase.DefaultInstance.RootReference;
         auth = FirebaseAuth.DefaultInstance;
 
+        // 🔒 Lock ALL doors at start
+        if (doorsToUnlock != null)
+        {
+            foreach (var door in doorsToUnlock)
+            {
+                if (door)
+                    door.LockDoor();
+            }
+        }
+
         HideAnswers();
         ShowIntro();
         LoadQuestionsFromRealtimeDB();
     }
+
+    // =======================
+    // INTRO
+    // =======================
 
     void ShowIntro()
     {
@@ -73,6 +94,10 @@ public class QuizUIController : MonoBehaviour
     {
         startButton.gameObject.SetActive(true);
     }
+
+    // =======================
+    // LOAD QUESTIONS
+    // =======================
 
     void LoadQuestionsFromRealtimeDB()
     {
@@ -103,6 +128,10 @@ public class QuizUIController : MonoBehaviour
             }
         });
     }
+
+    // =======================
+    // QUIZ FLOW
+    // =======================
 
     public void StartQuiz()
     {
@@ -190,6 +219,10 @@ public class QuizUIController : MonoBehaviour
         ShowQuestion();
     }
 
+    // =======================
+    // FINISH QUIZ
+    // =======================
+
     void FinishQuiz()
     {
         quizEnded = true;
@@ -200,8 +233,27 @@ public class QuizUIController : MonoBehaviour
             feedbackText.text = $"Score: {score} / 5\nPoints Earned: {earnedPoints}";
 
         SavePointsToFirebase();
+
+        // 🔓 Unlock ALL doors
+        if (doorsToUnlock != null)
+        {
+            foreach (var door in doorsToUnlock)
+            {
+                if (door)
+                    door.UnlockDoor();
+            }
+        }
+
         Invoke(nameof(HidePanel), panelHideDelay);
+
+        if (instructionUI)
+            instructionUI.OnQuizCompleted();
+
     }
+
+    // =======================
+    // FIREBASE POINTS
+    // =======================
 
     void SavePointsToFirebase()
     {
@@ -225,6 +277,10 @@ public class QuizUIController : MonoBehaviour
             return TransactionResult.Success(mutableData);
         });
     }
+
+    // =======================
+    // UI HELPERS
+    // =======================
 
     void HidePanel()
     {

@@ -7,14 +7,23 @@ public class InstructionUI : MonoBehaviour
     public CookingStepManager manager;
     public TMP_Text instructionText;
 
-    private void Awake()
+    void Awake()
     {
         if (instructionText == null)
             instructionText = GetComponent<TMP_Text>();
+
+        // 🔒 Hide instructions at start (before quiz)
+        gameObject.SetActive(false);
     }
 
-    private void OnEnable()
+    // =======================
+    // CALLED AFTER QUIZ
+    // =======================
+
+    public void OnQuizCompleted()
     {
+        gameObject.SetActive(true);
+
         if (manager != null)
         {
             manager.OnStepChanged.AddListener(UpdateInstruction);
@@ -38,7 +47,7 @@ public class InstructionUI : MonoBehaviour
         switch (step)
         {
             case CookingStepManager.Step.PreheatOven200:
-                return "Preheat the oven to 200°C";
+                return "Enter the next room beside and \npreheat the oven to 200°C";
 
             case CookingStepManager.Step.ScrubSkinNoPeel:
                 return "Scrub the potato skin clean. Do not peel.";
