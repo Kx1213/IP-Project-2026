@@ -16,10 +16,12 @@ public class VRGazeTooltipRay : MonoBehaviour
 
     GazeTooltipTarget currentTarget;
     float gazeTimer = 0f;
+    bool tooltipShown = false;
 
     void Start()
     {
-        tooltipPanel.SetActive(false);
+        if (tooltipPanel)
+            tooltipPanel.SetActive(false);
     }
 
     void Update()
@@ -37,15 +39,17 @@ public class VRGazeTooltipRay : MonoBehaviour
                 {
                     gazeTimer += Time.deltaTime;
 
-                    if (gazeTimer >= dwellTime)
+                    if (gazeTimer >= dwellTime && !tooltipShown)
                     {
                         ShowTooltip(target.displayName);
+                        tooltipShown = true;
                     }
                 }
                 else
                 {
                     currentTarget = target;
                     gazeTimer = 0f;
+                    tooltipShown = false;
                     HideTooltip();
                 }
 
@@ -53,25 +57,28 @@ public class VRGazeTooltipRay : MonoBehaviour
             }
         }
 
-        // If ray misses or hits non-target
         ResetGaze();
     }
 
     void ShowTooltip(string text)
     {
+        if (!tooltipPanel || !tooltipText) return;
+
         tooltipText.text = text;
         tooltipPanel.SetActive(true);
     }
 
     void HideTooltip()
     {
-        tooltipPanel.SetActive(false);
+        if (tooltipPanel)
+            tooltipPanel.SetActive(false);
     }
 
     void ResetGaze()
     {
         currentTarget = null;
         gazeTimer = 0f;
+        tooltipShown = false;
         HideTooltip();
     }
 }
