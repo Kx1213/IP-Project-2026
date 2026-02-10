@@ -1,0 +1,17 @@
+D:\IP-Project-2026\Library\PramData\AndroidApplicationController\Cache\ip.project.qiaomen\gradle-project\unityLibrary\src\main\cpp\GameActivity\GAToUnityCallbacks.h
+D:\IP-Project-2026\Library\PramData\AndroidApplicationController\Cache\ip.project.qiaomen\gradle-project\unityLibrary\src\main\cpp\GameActivity\MacroEnd.h
+D:\IP-Project-2026\Library\PramData\AndroidApplicationController\Cache\ip.project.qiaomen\gradle-project\unityLibrary\src\main\cpp\GameActivity\MacroHeaderBegin.h
+D:\IP-Project-2026\Library\PramData\AndroidApplicationController\Cache\ip.project.qiaomen\gradle-project\unityLibrary\src\main\cpp\GameActivity\MacroSourceBegin.h
+D:\IP-Project-2026\Library\PramData\AndroidApplicationController\Cache\ip.project.qiaomen\gradle-project\unityLibrary\src\main\cpp\GameActivity\UGAApplication.h
+D:\IP-Project-2026\Library\PramData\AndroidApplicationController\Cache\ip.project.qiaomen\gradle-project\unityLibrary\src\main\cpp\GameActivity\UGAConfiguration.h
+D:\IP-Project-2026\Library\PramData\AndroidApplicationController\Cache\ip.project.qiaomen\gradle-project\unityLibrary\src\main\cpp\GameActivity\UGADebug.h
+D:\IP-Project-2026\Library\PramData\AndroidApplicationController\Cache\ip.project.qiaomen\gradle-project\unityLibrary\src\main\cpp\GameActivity\UGAEvents.h
+D:\IP-Project-2026\Library\PramData\AndroidApplicationController\Cache\ip.project.qiaomen\gradle-project\unityLibrary\src\main\cpp\GameActivity\UGAInput.h
+D:\IP-Project-2026\Library\PramData\AndroidApplicationController\Cache\ip.project.qiaomen\gradle-project\unityLibrary\src\main\cpp\GameActivity\UGASoftKeyboard.h
+D:\IP-Project-2026\Library\PramData\AndroidApplicationController\Cache\ip.project.qiaomen\gradle-project\unityLibrary\src\main\cpp\GameActivity\UGASoftKeyboardCallbacks.h
+D:\IP-Project-2026\Library\PramData\AndroidApplicationController\Cache\ip.project.qiaomen\gradle-project\unityLibrary\src\main\cpp\GameActivity\UGATypes.h
+D:\IP-Project-2026\Library\PramData\AndroidApplicationController\Cache\ip.project.qiaomen\gradle-project\unityLibrary\src\main\cpp\GameActivity\UGAVersion.h
+D:\IP-Project-2026\Library\PramData\AndroidApplicationController\Cache\ip.project.qiaomen\gradle-project\unityLibrary\src\main\cpp\GameActivity\UnityToGACallbacks.h
+D:\IP-Project-2026\Library\PramData\AndroidApplicationController\Cache\ip.project.qiaomen\gradle-project\unityLibrary\src\main\cpp\GameActivity\UnityToGAConfigurationCallbacks.h
+D:\IP-Project-2026\Library\PramData\AndroidApplicationController\Cache\ip.project.qiaomen\gradle-project\unityLibrary\src\main\cpp\GameActivity\UnityToGAKeyEventCallbacks.h
+D:\IP-Project-2026\Library\PramData\AndroidApplicationController\Cache\ip.project.qiaomen\gradle-project\unityLibrary\src\main\cpp\GameActivity\UnityToGAMotionEventCallbacks.h

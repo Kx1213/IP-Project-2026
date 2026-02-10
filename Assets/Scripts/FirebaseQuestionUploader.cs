@@ -2,196 +2,96 @@ using UnityEngine;
 using Firebase.Database;
 using System.Collections.Generic;
 
-public class RealtimeQuestionUploader : MonoBehaviour
+public class RealtimeExtraQuestionUploader : MonoBehaviour
 {
     DatabaseReference db;
 
     void Start()
     {
         db = FirebaseDatabase.DefaultInstance.RootReference;
-        UploadQuestions();
+        UploadExtraQuestions();
     }
 
-    void UploadQuestions()
+    void UploadExtraQuestions()
     {
-        var questions = new List<object>();
+        List<Dictionary<string, object>> extraQuestions = new List<Dictionary<string, object>>();
 
-        questions.Add(new Dictionary<string, object>
+        extraQuestions.Add(new Dictionary<string, object>
         {
-            { "question", "What is the main function of carbohydrates?" },
-            { "answers", new string[] { "Build muscles", "Main source of energy", "Protect organs", "Heal wounds" } },
-            { "correctIndex", 1 }
-        });
-
-        questions.Add(new Dictionary<string, object>
-        {
-            { "question", "Which of the following is a simple carbohydrate?" },
-            { "answers", new string[] { "Rice", "Potatoes", "Honey", "Bread" } },
+            { "question", "Which carbohydrate releases energy more slowly?" },
+            { "answers", new string[] { "Honey", "Sugar", "Rice", "Maple syrup" } },
             { "correctIndex", 2 }
         });
 
-        questions.Add(new Dictionary<string, object>
+        extraQuestions.Add(new Dictionary<string, object>
         {
-            { "question", "Which food is a complex carbohydrate?" },
-            { "answers", new string[] { "Sugar", "Maple syrup", "Rice", "Honey" } },
+            { "question", "Which of the following is NOT a plant source of protein?" },
+            { "answers", new string[] { "Beans", "Lentils", "Egg", "Nuts" } },
             { "correctIndex", 2 }
         });
 
-        questions.Add(new Dictionary<string, object>
+        extraQuestions.Add(new Dictionary<string, object>
         {
-            { "question", "What is one function of proteins?" },
-            { "answers", new string[] { "Maintain eyesight", "Growth and repair of body cells", "Prevent constipation", "Regulate temperature" } },
+            { "question", "Which fat helps protect internal organs?" },
+            { "answers", new string[] { "Butter", "Body fat", "Sugar", "Salt" } },
             { "correctIndex", 1 }
         });
 
-        questions.Add(new Dictionary<string, object>
+        extraQuestions.Add(new Dictionary<string, object>
         {
-            { "question", "Which is a plant source of protein?" },
-            { "answers", new string[] { "Fish", "Milk", "Beans", "Egg" } },
-            { "correctIndex", 2 }
-        });
-
-        questions.Add(new Dictionary<string, object>
-        {
-            { "question", "When does the body use protein as a source of energy?" },
-            { "answers", new string[] { "When vitamins are lacking", "When carbohydrates and fats are lacking", "After exercise", "During sleep" } },
-            { "correctIndex", 1 }
-        });
-
-        questions.Add(new Dictionary<string, object>
-        {
-            { "question", "Which is a function of fats?" },
-            { "answers", new string[] { "Heal wounds", "Help absorb iron", "Keep the body warm", "Release energy from food" } },
-            { "correctIndex", 2 }
-        });
-
-        questions.Add(new Dictionary<string, object>
-        {
-            { "question", "Which is an example of animal fat?" },
-            { "answers", new string[] { "Olive oil", "Sunflower oil", "Butter", "Canola oil" } },
-            { "correctIndex", 2 }
-        });
-
-        questions.Add( new Dictionary<string, object>
-        {
-            { "question", "Why should fat be eaten in moderation?" },
-            { "answers", new string[] { "It has no nutrients", "Too much fat is bad for health", "It causes dehydration", "It prevents digestion" } },
-            { "correctIndex", 1 }
-        });
-
-        questions.Add(new Dictionary<string, object>
-        {
-            { "question", "Which vitamin helps maintain good eyesight?" },
-            { "answers", new string[] { "Vitamin B", "Vitamin C", "Vitamin D", "Vitamin A" } },
-            { "correctIndex", 3 }
-        });
-
-        questions.Add(new Dictionary<string, object>
-        {
-            { "question", "Which food is rich in Vitamin A?" },
-            { "answers", new string[] { "Oranges", "Carrots", "Wholegrains", "Fish" } },
-            { "correctIndex", 1 }
-        });
-
-        questions.Add(new Dictionary<string, object>
-        {
-            { "question", "What is the main function of Vitamin B group?" },
-            { "answers", new string[] { "Heal wounds", "Release energy from food", "Build bones", "Maintain fluid balance" } },
-            { "correctIndex", 1 }
-        });
-
-        questions.Add(new Dictionary<string, object>
-        {
-            { "question", "Which vitamin helps the body absorb calcium?" },
+            { "question", "Which vitamin helps heal wounds and absorb iron?" },
             { "answers", new string[] { "Vitamin A", "Vitamin B", "Vitamin C", "Vitamin D" } },
-            { "correctIndex", 3 }
-        });
-
-        questions.Add(new Dictionary<string, object>
-        {
-            { "question", "Which mineral helps build strong bones and teeth?" },
-            { "answers", new string[] { "Iron", "Sodium", "Calcium", "Vitamin D" } },
             { "correctIndex", 2 }
         });
 
-        questions.Add(new Dictionary<string, object>
+        extraQuestions.Add(new Dictionary<string, object>
         {
-            { "question", "Which mineral keeps red blood cells healthy?" },
-            { "answers", new string[] { "Iron", "Calcium", "Sodium", "Potassium" } },
-            { "correctIndex", 0 }
-        });
-
-        questions.Add(new Dictionary<string, object>
-        {
-            { "question", "What is one function of water in the body?" },
-            { "answers", new string[] { "Build muscles", "Regulate body temperature", "Provide vitamins", "Strengthen bones" } },
+            { "question", "Which mineral helps control muscle contractions?" },
+            { "answers", new string[] { "Iron", "Calcium", "Sodium", "Vitamin D" } },
             { "correctIndex", 1 }
         });
 
-        questions.Add(new Dictionary<string, object>
+        extraQuestions.Add(new Dictionary<string, object>
         {
-            { "question", "Which is a source of water?" },
-            { "answers", new string[] { "Bread", "Cheese", "Watermelon", "Butter" } },
+            { "question", "Which food is high in sodium chloride?" },
+            { "answers", new string[] { "Fresh fruit", "Milk", "Salted nuts", "Rice" } },
             { "correctIndex", 2 }
         });
 
-        questions.Add(new Dictionary<string, object>
+        extraQuestions.Add(new Dictionary<string, object>
         {
-            { "question", "What is the main function of dietary fibre?" },
-            { "answers", new string[] { "Provide energy", "Aids digestion", "Maintain eyesight", "Build muscles" } },
-            { "correctIndex", 1 }
-        });
-
-        questions.Add(new Dictionary<string, object>
-        {
-            { "question", "Which food is high in dietary fibre?" },
-            { "answers", new string[] { "Wholegrains", "Butter", "Milk", "Eggs" } },
-            { "correctIndex", 0 }
-        });
-
-        questions.Add(new Dictionary<string, object>
-        {
-            { "question", "What causes coronary heart disease?" },
-            { "answers", new string[] { "Low sugar intake", "Blocked blood vessels with fatty deposits", "Lack of water", "Vitamin deficiency" } },
-            { "correctIndex", 1 }
-        });
-
-        questions.Add(new Dictionary<string, object>
-        {
-            { "question", "Which habit increases the risk of high blood pressure?" },
-            { "answers", new string[] { "Eating fruits", "Exercising regularly", "Eating too much salty food", "Drinking water" } },
+            { "question", "Which is NOT a function of water?" },
+            { "answers", new string[] { "Regulate body temperature", "Remove waste", "Build muscles", "Produce sweat" } },
             { "correctIndex", 2 }
         });
 
-        questions.Add(new Dictionary<string, object>
+        extraQuestions.Add(new Dictionary<string, object>
         {
-            { "question", "What is obesity?" },
-            { "answers", new string[] { "Low body weight", "Excessive accumulation of body fat", "Lack of vitamins", "Low blood sugar" } },
+            { "question", "Which food helps prevent constipation?" },
+            { "answers", new string[] { "Butter", "Dietary fibre", "Sugar", "Salt" } },
             { "correctIndex", 1 }
         });
 
-        questions.Add(new Dictionary<string, object>
+        extraQuestions.Add(new Dictionary<string, object>
         {
-            { "question", "Which action helps reduce the risk of obesity?" },
-            { "answers", new string[] { "Eating more sugary food", "Skipping meals", "Exercising regularly", "Avoiding fruits" } },
-            { "correctIndex", 2 }
+            { "question", "Which habit helps reduce the risk of coronary heart disease?" },
+            { "answers", new string[] { "Eating more fatty food", "Using olive oil", "Skipping exercise", "Eating salty snacks" } },
+            { "correctIndex", 1 }
         });
 
-        questions.Add(new Dictionary<string, object>
-        {
-            { "question", "What is a cause of type 2 diabetes?" },
-            { "answers", new string[] { "Excess intake of sugary food", "Low fat intake", "Drinking water", "Eating vegetables" } },
-            { "correctIndex", 0 }
-        });
-
-        questions.Add(new Dictionary<string, object>
+        extraQuestions.Add(new Dictionary<string, object>
         {
             { "question", "Which practice helps prevent food contamination?" },
-            { "answers", new string[] { "Leaving food uncovered", "Mixing raw and cooked food", "Cooking food properly", "Storing food in warm places" } },
+            { "answers", new string[] { "Keeping food uncovered", "Mixing raw and cooked food", "Cleaning equipment thoroughly", "Storing food in warm places" } },
             { "correctIndex", 2 }
         });
 
-        db.Child("questions").SetValueAsync(questions);
-        Debug.Log("25 nutrition questions uploaded to Realtime Database");
+        // PUSH questions so existing ones are NOT overwritten
+        foreach (var q in extraQuestions)
+        {
+            db.Child("questions").Push().SetValueAsync(q);
+        }
+
+        Debug.Log("10 extra nutrition questions pushed to Firebase");
     }
 }
