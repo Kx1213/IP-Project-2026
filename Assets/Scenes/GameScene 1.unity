@@ -552,7 +552,7 @@ Transform:
   m_GameObject: {fileID: 360382817}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.219, y: 0, z: -0}
+  m_LocalPosition: {x: -0.219, y: -0, z: -0.002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -606,6 +606,7 @@ MonoBehaviour:
   OnStepChanged:
     m_PersistentCalls:
       m_Calls: []
+  pointsPerStep: 200
 --- !u!1001 &587260334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -782,37 +783,6 @@ Transform:
   - {fileID: 4397564952545674238}
   m_Father: {fileID: 134314797}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &868694907
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 868694908}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &868694908
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 868694907}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.136, z: -1.931}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3654949213934581753}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1065733170
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,7 +910,7 @@ Transform:
   m_GameObject: {fileID: 1345467774}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.342, y: 0.56, z: 4.406}
+  m_LocalPosition: {x: 0.21, y: 0.56, z: 3.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -966,8 +936,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1946512, y: 1, z: 1.3300018}
-  m_Center: {x: -0.09732562, y: -4.0768805e-25, z: -0.012049675}
+  m_Size: {x: 1.1946512, y: 1, z: 1.7788963}
+  m_Center: {x: -0.09732562, y: -1.2193691e-24, z: 0.21239758}
 --- !u!114 &1345467777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2120,9 +2090,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2084080873}
-  - component: {fileID: 2084080875}
   - component: {fileID: 2084080874}
   - component: {fileID: 2084080876}
+  - component: {fileID: 2084080877}
   m_Layer: 0
   m_Name: PlateSocket
   m_TagString: Untagged
@@ -2139,7 +2109,7 @@ Transform:
   m_GameObject: {fileID: 2084080872}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.25046235, y: -1.130534, z: 1.138603}
+  m_LocalPosition: {x: 0, y: 0.0140224695, z: 0.0000032186508}
   m_LocalScale: {x: 3.3142211, y: 3.3142211, z: 3.3142211}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2194,7 +2164,23 @@ MonoBehaviour:
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
---- !u!65 &2084080875
+--- !u!114 &2084080876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084080872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2130da36f0b72d64e8d06fd323ff723d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  requiredStep: 7
+  stepToAdvanceFrom: 7
+  requiredTag: Potato
+--- !u!65 &2084080877
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2213,24 +2199,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.27189708, y: 0.12368865, z: 0.27335164}
-  m_Center: {x: 0.079579465, y: 0.4381558, z: -0.31674004}
---- !u!114 &2084080876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084080872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2130da36f0b72d64e8d06fd323ff723d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 0}
-  requiredStep: 7
-  stepToAdvanceFrom: 7
-  requiredTag: Potato
+  m_Size: {x: 0.38056332, y: 0.8539852, z: 1}
+  m_Center: {x: -0.008740515, y: 0.353596, z: 0}
 --- !u!1 &2111485658
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,7 +2226,7 @@ Transform:
   m_GameObject: {fileID: 2111485658}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.42, z: 0}
+  m_LocalPosition: {x: 0, y: 0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41604,7 +41574,6 @@ Transform:
   m_Children:
   - {fileID: 2084080873}
   - {fileID: 268164308}
-  - {fileID: 868694908}
   m_Father: {fileID: 1668619132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3656839112481270511
