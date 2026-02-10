@@ -1,0 +1,5 @@
+C:/NP 2025/Sem 2.2/Cook_IP/IPCookUnity/IP-Project-2026/.utmp/RelWithDebInfo/4g2m234f/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/NP 2025/Sem 2.2/Cook_IP/IPCookUnity/IP-Project-2026/.utmp/RelWithDebInfo/4g2m234f/arm64-v8a/CMakeFiles/rebuild_cache.dir
+C:/NP 2025/Sem 2.2/Cook_IP/IPCookUnity/IP-Project-2026/.utmp/RelWithDebInfo/4g2m234f/arm64-v8a/GameActivity/CMakeFiles/game.dir
+C:/NP 2025/Sem 2.2/Cook_IP/IPCookUnity/IP-Project-2026/.utmp/RelWithDebInfo/4g2m234f/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+C:/NP 2025/Sem 2.2/Cook_IP/IPCookUnity/IP-Project-2026/.utmp/RelWithDebInfo/4g2m234f/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir

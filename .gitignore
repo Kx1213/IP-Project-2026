@@ -63,3 +63,5 @@ Pods/
 # -------------------------
 .DS_Store
 Thumbs.db
+Assets/google-services.json.meta
+Assets/StreamingAssets/google-services-desktop.json.meta

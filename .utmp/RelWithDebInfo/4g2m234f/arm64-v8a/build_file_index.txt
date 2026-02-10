@@ -1,0 +1,2 @@
+C:\NP 2025\Sem 2.2\Cook_IP\IPCookUnity\IP-Project-2026\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\NP 2025\Sem 2.2\Cook_IP\IPCookUnity\IP-Project-2026\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt
