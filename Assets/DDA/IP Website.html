@@ -10,113 +10,158 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
   <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f9;
       margin: 0;
-      padding: 0;
-      color: #333;
+      padding: 40px;
+      background: #f5f0e6; /* soft white oak cream */
+      color: #3e2c1c; /* dark brown text */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     h1 {
-      text-align: center;
-      background: #4a90e2;
-      color: white;
-      padding: 20px;
       margin: 0;
+      font-size: 2.2rem;
+      letter-spacing: 2px;
+      color: #5a3e27; /* medium brown */
     }
 
     h2 {
-      color: #4a90e2;
-      margin-bottom: 10px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-align: center;
+      color: #5a3e27;
     }
 
-    /* Login card styling */
-    #login {
-      max-width: 400px;
-      margin: 20px auto;
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 40px;
     }
 
-    /* Flex container for profile + leaderboard */
+    .header img {
+      width: 50px;
+      height: 50px;
+    }
+
+    /* Flex container for login + leaderboard */
     .main-container {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin: 20px;
-      gap: 20px;
-    }
-
-    .card {
-      flex: 1;
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    /* Profile section narrower */
-    #profile.card {
-      max-width: 300px;
-    }
-
-    /* Leaderboard wider */
-    .card.leaderboard {
-      flex: 2;
-    }
-
-    input[type="email"], input[type="password"], input[type="file"] {
+      gap: 40px;
       width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
+      max-width: 1200px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    #login,
+    #profile,
+    .leaderboard-box {
+      background: #fffaf0; /* off-white oak panel */
+      border-radius: 14px;
+      padding: 25px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      min-width: 300px;
+      flex: 1 1 300px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #d9cbbf; /* soft brown border */
+      outline: none;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      background: #fcf6ed; /* very light cream */
+      color: #3e2c1c;
+    }
+
+    input::placeholder {
+      color: #a18c75; /* soft brown */
     }
 
     button {
-      background: #4a90e2;
-      color: white;
-      border: none;
       padding: 10px 16px;
-      margin: 5px 0;
-      border-radius: 6px;
+      border-radius: 10px;
+      border: none;
       cursor: pointer;
-      font-size: 14px;
-      transition: background 0.3s ease;
+      font-size: 0.9rem;
+      margin-right: 6px;
+      margin-bottom: 8px;
+      background: #c9a66b; /* soft golden oak */
+      color: #fffaf0;
+      font-weight: 600;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     button:hover {
-      background: #357ab8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    button:last-of-type {
+      background: #8c7150; /* darker brown for forgot password */
     }
 
     #loginStatus {
       margin-top: 10px;
-      font-size: 14px;
-      color: #e74c3c;
+      font-size: 0.9rem;
+      color: #b78e55; /* warm brown status */
     }
 
-    /* Leaderboard styling */
-    #leaderboardList {
-      padding-left: 20px;
+    /* Leaderboard */
+    ol {
+      padding-left: 0;
+      margin: 0;
+      list-style-position: inside;
     }
 
-    #leaderboardList li {
-      background: #f9f9f9;
-      margin: 5px 0;
-      padding: 8px 12px;
-      border-radius: 6px;
-      border: 1px solid #ddd;
-      font-size: 14px;
+    ol li {
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      background: #f0e5d8; /* light oak panel */
+      border-radius: 10px;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #3e2c1c;
     }
 
-    /* Responsive: stack on small screens */
-    @media (max-width: 768px) {
+    ol li:nth-child(1) {
+      background: #d4b483; /* gold-ish first place */
+      font-weight: 600;
+    }
+
+    ol li:nth-child(2) {
+      background: #cbb69c; /* silver-ish second */
+    }
+
+    ol li:nth-child(3) {
+      background: #b89e81; /* bronze-ish third */
+    }
+
+    #profile p {
+      margin: 8px 0;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
       .main-container {
         flex-direction: column;
+        align-items: center;
       }
     }
   </style>
@@ -124,31 +169,32 @@
 
 <body>
 
-<h1>My Firebase Website</h1>
-
-<div id="login">
-  <h2>Login / Register</h2>
-  <input id="loginEmail" type="email" placeholder="Email"><br><br>
-  <input id="loginPassword" type="password" placeholder="Password"><br><br>
-  <button onclick="login()">Login</button>
-  <button onclick="register()">Register</button>
-  <p id="loginStatus"></p>
+<!-- Header -->
+<div class="header">
+  <img src="logo.png" alt="Logo">
+  <h1>COOKED</h1>
 </div>
 
-<hr>
-
+<!-- Main panels -->
 <div class="main-container">
-  <div id="profile" class="card" style="display:none;">
-    <h2>Profile</h2>
-    <p id="username"></p>
-    <p id="email"></p>
-    <button onclick="logout()">Logout</button>
+
+  <!-- Login -->
+  <div id="login">
+    <h2>Login / Register</h2>
+    <input id="loginEmail" type="email" placeholder="Email">
+    <input id="loginPassword" type="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <button onclick="register()">Register</button>
+    <button onclick="forgotPassword()">Forgot Password</button>
+    <p id="loginStatus"></p>
   </div>
 
-  <div class="card leaderboard">
+  <!-- Leaderboard -->
+  <div class="leaderboard-box">
     <h2>Leaderboard</h2>
     <ol id="leaderboardList"></ol>
   </div>
+
 </div>
 
 <script>
@@ -163,36 +209,30 @@
   };
 
   firebase.initializeApp(firebaseConfig);
-
   const auth = firebase.auth();
   const db = firebase.database();
 
   function register() {
-    const email = loginEmail.value;
-    const password = loginPassword.value;
-
-    auth.createUserWithEmailAndPassword(email, password)
-      .then(res => {
-        const uid = res.user.uid;
-        return db.ref("users/" + uid).set({
-          email: email,
-          username: email.split("@")[0],
-          points: 0
-        });
-      })
-      .then(() => {
-        loginStatus.textContent = "Registered successfully!";
-      })
-      .catch(err => {
-        loginStatus.textContent = err.message;
-      });
+    auth.createUserWithEmailAndPassword(loginEmail.value, loginPassword.value)
+      .then(res => db.ref("users/" + res.user.uid).set({
+        email: loginEmail.value,
+        username: loginEmail.value.split("@")[0],
+        points: 0
+      }))
+      .then(() => loginStatus.textContent = "Registered successfully!")
+      .catch(err => loginStatus.textContent = err.message);
   }
 
   function login() {
     auth.signInWithEmailAndPassword(loginEmail.value, loginPassword.value)
-      .catch(err => {
-        loginStatus.textContent = err.message;
-      });
+      .catch(err => loginStatus.textContent = err.message);
+  }
+
+  function forgotPassword() {
+    if (!loginEmail.value) return alert("Enter your email first");
+    auth.sendPasswordResetEmail(loginEmail.value)
+      .then(() => alert("Password reset email sent!"))
+      .catch(err => alert(err.message));
   }
 
   function logout() {
@@ -200,35 +240,26 @@
   }
 
   auth.onAuthStateChanged(user => {
-    if (user) {
-      loadProfile(user.uid);
-      document.getElementById("login").style.display = "none";
-      document.getElementById("profile").style.display = "block";
-    } else {
-      document.getElementById("login").style.display = "block";
-      document.getElementById("profile").style.display = "none";
-    }
+    login.style.display = user ? "none" : "block";
+    if(user) loadProfile(user.uid);
   });
 
   function loadProfile(uid) {
     db.ref("users/" + uid).once("value").then(snap => {
       const u = snap.val();
-      if (!u) return;
-      username.textContent = "Username: " + u.username;
-      email.textContent = "Email: " + u.email;
+      if(!u) return;
     });
   }
 
   db.ref("users").on("value", snap => {
-    const data = snap.val();
     leaderboardList.innerHTML = "";
-    if (!data) return;
-
+    const data = snap.val();
+    if(!data) return;
     Object.values(data)
-      .sort((a,b) => (b.points || 0) - (a.points || 0))
+      .sort((a,b) => (b.points||0) - (a.points||0))
       .forEach(u => {
         const li = document.createElement("li");
-        li.textContent = (u.username || "Unknown") + " - " + (u.points || 0) + " pts";
+        li.textContent = `${u.username||"Unknown"} - ${u.points||0} pts`;
         leaderboardList.appendChild(li);
       });
   });
