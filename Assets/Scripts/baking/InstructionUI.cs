@@ -7,34 +7,33 @@ public class InstructionUI : MonoBehaviour
     public CookingStepManager manager;
     public TMP_Text instructionText;
 
-    void Awake()
+    private void Awake()
     {
         if (instructionText == null)
             instructionText = GetComponent<TMP_Text>();
 
-        // 🔒 Hide instructions at start (before quiz)
-        gameObject.SetActive(false);
+        if (manager == null)
+            manager = FindObjectOfType<CookingStepManager>();
+
+        if (instructionText == null)
+            Debug.LogError("[InstructionUI] No TMP_Text found. Attach this script to a TMP Text object.");
+
+        if (manager == null)
+            Debug.LogError("[InstructionUI] No CookingStepManager found. Put it on GameManager.");
     }
 
-    // =======================
-    // CALLED AFTER QUIZ
-    // =======================
-
-    public void OnQuizCompleted()
+    private void OnEnable()
     {
-        gameObject.SetActive(true);
+        if (manager == null || instructionText == null) return;
 
-        if (manager != null)
-        {
-            manager.OnStepChanged.AddListener(UpdateInstruction);
-            UpdateInstruction(manager.currentStep); // show first step immediately
-        }
+        manager.OnStepChanged.AddListener(UpdateInstruction);
+        UpdateInstruction(manager.currentStep);
     }
 
     private void OnDisable()
     {
-        if (manager != null)
-            manager.OnStepChanged.RemoveListener(UpdateInstruction);
+        if (manager == null) return;
+        manager.OnStepChanged.RemoveListener(UpdateInstruction);
     }
 
     private void UpdateInstruction(CookingStepManager.Step step)
@@ -47,37 +46,43 @@ public class InstructionUI : MonoBehaviour
         switch (step)
         {
             case CookingStepManager.Step.PreheatOven200:
-                return "Enter the next room beside and \npreheat the oven to 200°C";
+                return "Step 1: Preheat the oven to 200°C.\nPress the PREHEAT button.";
 
             case CookingStepManager.Step.ScrubSkinNoPeel:
-                return "Scrub the potato skin clean. Do not peel.";
+                return "Step 2: Scrub the potato clean (do not peel).\nHold it in the sink scrub zone.";
 
             case CookingStepManager.Step.Slice5mmDontCutThrough:
-                return "Slice the potato into 5mm slices.\nDo not cut all the way through.";
+                return "Step 3: Slice into ~5mm slices.\nDo NOT cut all the way through.";
 
             case CookingStepManager.Step.PlaceInBakingPan:
-                return "Place the sliced potato into the baking pan.";
+                return "Step 4: Place the potato on the tray/pan.\nSnap it into the PanSocket.";
 
             case CookingStepManager.Step.BrushWithOilOrButter:
-                return "Brush the potato evenly with oil or butter.";
+                return "Step 5: Brush oil/butter evenly over the potato.";
 
             case CookingStepManager.Step.SprinkleSalt:
-                return "Sprinkle salt evenly over the potato.";
+                return "Step 6: Sprinkle salt evenly over the potato.";
 
             case CookingStepManager.Step.Bake40Min:
-                return "Place the pan into the oven and press Bake.";
+                if (manager != null && manager.bakingInProgress)
+                    return "Step 7: Baking...\nPlease wait until it finishes.";
+
+                return "Step 7: Put the tray into the oven.\nSnap into OvenSocket, then press BAKE.";
 
             case CookingStepManager.Step.ServeOnPlate:
-                return "Serve the baked potato on a plate.";
-
-            case CookingStepManager.Step.GarnishParsley:
-                return "Garnish with parsley.";
+                return "Step 8: Take it out and serve on the plate.\nPlace it on PlateSocket to finish the game.";
 
             case CookingStepManager.Step.Done:
-                return "Dish complete! Well done 👏";
+                return "✅ Dish completed! Game finished.";
 
             default:
                 return "";
         }
+    }
+
+    public void OnQuizCompleted()
+    {
+        if (instructionText != null)
+            instructionText.text = "Quiz completed! Continue to the cooking task.";
     }
 }

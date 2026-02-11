@@ -637,8 +637,8 @@ GameObject:
   m_Component:
   - component: {fileID: 17680269}
   - component: {fileID: 17680272}
-  - component: {fileID: 17680271}
   - component: {fileID: 17680270}
+  - component: {fileID: 17680273}
   m_Layer: 0
   m_Name: PlateSocket
   m_TagString: Untagged
@@ -683,22 +683,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.38056332, y: 0.8539852, z: 1}
   m_Center: {x: -0.008740515, y: 0.353596, z: 0}
---- !u!114 &17680271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17680268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2130da36f0b72d64e8d06fd323ff723d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 0}
-  requiredStep: 7
-  stepToAdvanceFrom: 7
-  requiredTag: Potato
 --- !u!114 &17680272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -747,6 +731,20 @@ MonoBehaviour:
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
+--- !u!114 &17680273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17680268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1042c28eb508dda4fb1e2560a0a4f2fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 570470169}
+  requiredTag: Potato
 --- !u!4 &20264191 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1260116692700372445, guid: 9d8edfaf2ab59774aa68cac595633d4b, type: 3}
@@ -2202,6 +2200,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1930621506783459141, guid: 49db305ca75e4074e86d549cafa6403a, type: 3}
   m_PrefabInstance: {fileID: 1497015105}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &24652059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 24652060}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &24652060
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24652059}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.07, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 763305977}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &26802018
 GameObject:
   m_ObjectHideFlags: 0
@@ -37174,7 +37203,7 @@ MonoBehaviour:
   OnStepChanged:
     m_PersistentCalls:
       m_Calls: []
-  pointsPerStep: 200
+  bakingInProgress: 0
 --- !u!4 &570470170
 Transform:
   m_ObjectHideFlags: 0
@@ -45460,7 +45489,8 @@ Transform:
   m_LocalPosition: {x: 0.32, y: 0.023, z: 0.418}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 24652060}
   m_Father: {fileID: 779822223}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &763305978
@@ -45516,7 +45546,7 @@ MonoBehaviour:
   m_InteractionLayers:
     m_Bits: 4294967295
   m_Handedness: 0
-  m_AttachTransform: {fileID: 763305977}
+  m_AttachTransform: {fileID: 24652060}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
   m_StartingSelectedInteractable: {fileID: 0}
@@ -46526,7 +46556,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779822222}
   serializedVersion: 4
-  m_Mass: 50
+  m_Mass: 5000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -46564,8 +46594,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.59665287, y: 0.035595093, z: 0.9229724}
-  m_Center: {x: 0.27421516, y: 0.017797498, z: 0.4468902}
+  m_Size: {x: 0.59665287, y: 0.04786311, z: 0.9229724}
+  m_Center: {x: 0.27421516, y: 0.011663489, z: 0.4468902}
 --- !u!23 &779822227
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -58174,6 +58204,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d8edfaf2ab59774aa68cac595633d4b, type: 3}
+--- !u!1 &1036844757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1036844758}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1036844758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036844757}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.28, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1988757274}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1042892197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101946,7 +102007,8 @@ Transform:
   m_LocalPosition: {x: 0.0018740597, y: 0.5126534, z: -0.078993104}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1036844758}
   m_Father: {fileID: 593446640}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1988757275
@@ -101965,7 +102027,7 @@ MonoBehaviour:
   m_InteractionLayers:
     m_Bits: 4294967295
   m_Handedness: 0
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 1036844758}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
   m_StartingSelectedInteractable: {fileID: 0}
@@ -104129,7 +104191,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 570470169}
-  strokesNeeded: 8
+  brushNeeded: 4
+  minBrushSpeed: 0.15
+  addPerSecond: 1
 --- !u!65 &2019724527
 BoxCollider:
   m_ObjectHideFlags: 0
