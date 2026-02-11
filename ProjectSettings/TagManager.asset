@@ -4,30 +4,21 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - PotatoRaw
   - Knife
-  - Brush
-  - Oil
-  - Anchor
-  - PotatoCooked
-  - hand
-  - Chopped
-  - Food
-  - bruhs
   - SaltShaker
-  - Parsley
-  - Potato
+  - Brush
   - Tray
+  - Potato
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - hand
+  - 
   - Water
   - UI
-  - Food
-  - Tools
-  - TrayOnly
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -55,12 +46,8 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: UI
+    uniqueID: 3125046521
+    locked: 0
   m_RenderingLayers:
   - Default
-  - Light Layer 1
-  - Light Layer 2
-  - Light Layer 3
-  - Light Layer 4
-  - Light Layer 5
-  - Light Layer 6
-  - Light Layer 7
