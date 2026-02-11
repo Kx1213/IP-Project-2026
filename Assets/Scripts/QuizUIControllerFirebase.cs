@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Firebase.Database;
 using Firebase.Auth;
+using Firebase.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,12 +17,13 @@ public class QuizUIController : MonoBehaviour
         public int correctIndex;
     }
 
-    [Header("Intro")]
-    public string introLine = "Class Begins";
-    public float buttonAppearDelay = 1.5f;
+    [Header("Start Screen")]
+    public GameObject startScreen;   // 🔥 Image screen before quiz
+
+    [Header("Quiz Panel")]
+    public GameObject panel;         // 🔥 RawImage used as quiz panel
 
     [Header("UI")]
-    public GameObject panel;
     public TMP_Text mainText;
     public TMP_Text feedbackText;
     public Button startButton;
@@ -37,11 +39,10 @@ public class QuizUIController : MonoBehaviour
     public int pointsPerCorrect = 100;
 
     [Header("Doors unlocked after quiz")]
-    public DoorLockController[] doorsToUnlock;   // 🔒🔒 multiple doors
+    public DoorLockController[] doorsToUnlock;
 
     [Header("Instruction UI")]
     public InstructionUI instructionUI;
-
 
     DatabaseReference db;
     FirebaseAuth auth;
@@ -54,13 +55,14 @@ public class QuizUIController : MonoBehaviour
     int earnedPoints = 0;
     bool answered = false;
     bool quizEnded = false;
+    bool questionsLoaded = false;
 
     void Start()
     {
         db = FirebaseDatabase.DefaultInstance.RootReference;
         auth = FirebaseAuth.DefaultInstance;
 
-        // 🔒 Lock ALL doors at start
+        // Lock doors at start
         if (doorsToUnlock != null)
         {
             foreach (var door in doorsToUnlock)
@@ -70,29 +72,17 @@ public class QuizUIController : MonoBehaviour
             }
         }
 
+        // 🔥 Show start screen first
+        startScreen.SetActive(true);
+
+        // 🔥 Hide quiz panel initially
+        panel.SetActive(false);
+
         HideAnswers();
-        ShowIntro();
+
+        startButton.interactable = false;
+
         LoadQuestionsFromRealtimeDB();
-    }
-
-    // =======================
-    // INTRO
-    // =======================
-
-    void ShowIntro()
-    {
-        CancelInvoke();
-
-        mainText.text = introLine;
-        if (feedbackText) feedbackText.text = "";
-
-        startButton.gameObject.SetActive(false);
-        Invoke(nameof(ShowStartButton), buttonAppearDelay);
-    }
-
-    void ShowStartButton()
-    {
-        startButton.gameObject.SetActive(true);
     }
 
     // =======================
@@ -101,9 +91,10 @@ public class QuizUIController : MonoBehaviour
 
     void LoadQuestionsFromRealtimeDB()
     {
-        db.Child("questions").GetValueAsync().ContinueWith(task =>
+        db.Child("questions").GetValueAsync()
+        .ContinueWithOnMainThread(task =>
         {
-            if (task.IsFaulted || !task.IsCompleted)
+            if (task.IsFaulted || task.IsCanceled)
             {
                 Debug.LogError("Failed to load questions from Realtime DB");
                 return;
@@ -114,6 +105,8 @@ public class QuizUIController : MonoBehaviour
 
             foreach (var child in snapshot.Children)
             {
+                if (child.Child("question").Value == null) continue;
+
                 Question q = new Question
                 {
                     question = child.Child("question").Value.ToString(),
@@ -124,26 +117,44 @@ public class QuizUIController : MonoBehaviour
                     correctIndex = int.Parse(child.Child("correctIndex").Value.ToString())
                 };
 
-                allQuestions.Add(q);
+                if (q.answers.Length >= 4)
+                    allQuestions.Add(q);
+            }
+
+            Debug.Log("Questions loaded: " + allQuestions.Count);
+
+            if (allQuestions.Count >= 5)
+            {
+                questionsLoaded = true;
+                startButton.interactable = true;
+            }
+            else
+            {
+                Debug.LogError("Database has less than 5 valid questions.");
             }
         });
     }
 
     // =======================
-    // QUIZ FLOW
+    // START QUIZ
     // =======================
 
     public void StartQuiz()
     {
-        if (allQuestions.Count < 5)
+        if (!questionsLoaded)
         {
-            Debug.LogError("Not enough questions in database");
+            Debug.Log("Questions still loading...");
             return;
         }
 
-        CancelInvoke();
+        // 🔥 Hide start screen
+        startScreen.SetActive(false);
 
-        startButton.gameObject.SetActive(false);
+        // 🔥 Show quiz panel
+        panel.SetActive(true);
+
+        startButton.interactable = false;
+
         score = 0;
         earnedPoints = 0;
         current = 0;
@@ -157,9 +168,12 @@ public class QuizUIController : MonoBehaviour
         ShowQuestion();
     }
 
+    // =======================
+    // QUESTION DISPLAY
+    // =======================
+
     void ShowQuestion()
     {
-        CancelInvoke();
         answered = false;
 
         if (current >= quizQuestions.Count)
@@ -170,6 +184,7 @@ public class QuizUIController : MonoBehaviour
 
         var q = quizQuestions[current];
         mainText.text = q.question;
+
         if (feedbackText) feedbackText.text = "";
 
         for (int i = 0; i < 4; i++)
@@ -203,9 +218,11 @@ public class QuizUIController : MonoBehaviour
         }
 
         if (feedbackText)
+        {
             feedbackText.text = correct
-                ? "+100 Points!\nCorrect"
+                ? $"+{pointsPerCorrect} Points!\nCorrect"
                 : $"Wrong\nCorrect: {q.answers[q.correctIndex]}";
+        }
 
         foreach (var btn in answerButtons)
             btn.interactable = false;
@@ -220,7 +237,7 @@ public class QuizUIController : MonoBehaviour
     }
 
     // =======================
-    // FINISH QUIZ
+    // FINISH
     // =======================
 
     void FinishQuiz()
@@ -229,12 +246,12 @@ public class QuizUIController : MonoBehaviour
         HideAnswers();
 
         mainText.text = "Class Ended";
+
         if (feedbackText)
             feedbackText.text = $"Score: {score} / 5\nPoints Earned: {earnedPoints}";
 
         SavePointsToFirebase();
 
-        // 🔓 Unlock ALL doors
         if (doorsToUnlock != null)
         {
             foreach (var door in doorsToUnlock)
@@ -248,12 +265,7 @@ public class QuizUIController : MonoBehaviour
 
         if (instructionUI)
             instructionUI.OnQuizCompleted();
-
     }
-
-    // =======================
-    // FIREBASE POINTS
-    // =======================
 
     void SavePointsToFirebase()
     {
@@ -278,10 +290,6 @@ public class QuizUIController : MonoBehaviour
         });
     }
 
-    // =======================
-    // UI HELPERS
-    // =======================
-
     void HidePanel()
     {
         panel.SetActive(false);
@@ -291,12 +299,5 @@ public class QuizUIController : MonoBehaviour
     {
         foreach (var btn in answerButtons)
             btn.gameObject.SetActive(false);
-    }
-
-    public void OnPanelClicked()
-    {
-        if (!quizEnded) return;
-        CancelInvoke();
-        HidePanel();
     }
 }

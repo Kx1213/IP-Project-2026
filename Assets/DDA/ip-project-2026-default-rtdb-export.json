@@ -1,0 +1,427 @@
+{
+  "questions": {
+    "0": {
+      "answers": [
+        "Build muscles",
+        "Main source of energy",
+        "Protect organs",
+        "Heal wounds"
+      ],
+      "correctIndex": 1,
+      "question": "What is the main function of carbohydrates?"
+    },
+    "1": {
+      "answers": [
+        "Rice",
+        "Potatoes",
+        "Honey",
+        "Bread"
+      ],
+      "correctIndex": 2,
+      "question": "Which of the following is a simple carbohydrate?"
+    },
+    "2": {
+      "answers": [
+        "Sugar",
+        "Maple syrup",
+        "Rice",
+        "Honey"
+      ],
+      "correctIndex": 2,
+      "question": "Which food is a complex carbohydrate?"
+    },
+    "3": {
+      "answers": [
+        "Maintain eyesight",
+        "Growth and repair of body cells",
+        "Prevent constipation",
+        "Regulate temperature"
+      ],
+      "correctIndex": 1,
+      "question": "What is one function of proteins?"
+    },
+    "4": {
+      "answers": [
+        "Fish",
+        "Milk",
+        "Beans",
+        "Egg"
+      ],
+      "correctIndex": 2,
+      "question": "Which is a plant source of protein?"
+    },
+    "5": {
+      "answers": [
+        "When vitamins are lacking",
+        "When carbohydrates and fats are lacking",
+        "After exercise",
+        "During sleep"
+      ],
+      "correctIndex": 1,
+      "question": "When does the body use protein as a source of energy?"
+    },
+    "6": {
+      "answers": [
+        "Heal wounds",
+        "Help absorb iron",
+        "Keep the body warm",
+        "Release energy from food"
+      ],
+      "correctIndex": 2,
+      "question": "Which is a function of fats?"
+    },
+    "7": {
+      "answers": [
+        "Olive oil",
+        "Sunflower oil",
+        "Butter",
+        "Canola oil"
+      ],
+      "correctIndex": 2,
+      "question": "Which is an example of animal fat?"
+    },
+    "8": {
+      "answers": [
+        "It has no nutrients",
+        "Too much fat is bad for health",
+        "It causes dehydration",
+        "It prevents digestion"
+      ],
+      "correctIndex": 1,
+      "question": "Why should fat be eaten in moderation?"
+    },
+    "9": {
+      "answers": [
+        "Vitamin B",
+        "Vitamin C",
+        "Vitamin D",
+        "Vitamin A"
+      ],
+      "correctIndex": 3,
+      "question": "Which vitamin helps maintain good eyesight?"
+    },
+    "10": {
+      "answers": [
+        "Oranges",
+        "Carrots",
+        "Wholegrains",
+        "Fish"
+      ],
+      "correctIndex": 1,
+      "question": "Which food is rich in Vitamin A?"
+    },
+    "11": {
+      "answers": [
+        "Heal wounds",
+        "Release energy from food",
+        "Build bones",
+        "Maintain fluid balance"
+      ],
+      "correctIndex": 1,
+      "question": "What is the main function of Vitamin B group?"
+    },
+    "12": {
+      "answers": [
+        "Vitamin A",
+        "Vitamin B",
+        "Vitamin C",
+        "Vitamin D"
+      ],
+      "correctIndex": 3,
+      "question": "Which vitamin helps the body absorb calcium?"
+    },
+    "13": {
+      "answers": [
+        "Iron",
+        "Sodium",
+        "Calcium",
+        "Vitamin D"
+      ],
+      "correctIndex": 2,
+      "question": "Which mineral helps build strong bones and teeth?"
+    },
+    "14": {
+      "answers": [
+        "Iron",
+        "Calcium",
+        "Sodium",
+        "Potassium"
+      ],
+      "correctIndex": 0,
+      "question": "Which mineral keeps red blood cells healthy?"
+    },
+    "15": {
+      "answers": [
+        "Build muscles",
+        "Regulate body temperature",
+        "Provide vitamins",
+        "Strengthen bones"
+      ],
+      "correctIndex": 1,
+      "question": "What is one function of water in the body?"
+    },
+    "16": {
+      "answers": [
+        "Bread",
+        "Cheese",
+        "Watermelon",
+        "Butter"
+      ],
+      "correctIndex": 2,
+      "question": "Which is a source of water?"
+    },
+    "17": {
+      "answers": [
+        "Provide energy",
+        "Aids digestion",
+        "Maintain eyesight",
+        "Build muscles"
+      ],
+      "correctIndex": 1,
+      "question": "What is the main function of dietary fibre?"
+    },
+    "18": {
+      "answers": [
+        "Wholegrains",
+        "Butter",
+        "Milk",
+        "Eggs"
+      ],
+      "correctIndex": 0,
+      "question": "Which food is high in dietary fibre?"
+    },
+    "19": {
+      "answers": [
+        "Low sugar intake",
+        "Blocked blood vessels with fatty deposits",
+        "Lack of water",
+        "Vitamin deficiency"
+      ],
+      "correctIndex": 1,
+      "question": "What causes coronary heart disease?"
+    },
+    "20": {
+      "answers": [
+        "Eating fruits",
+        "Exercising regularly",
+        "Eating too much salty food",
+        "Drinking water"
+      ],
+      "correctIndex": 2,
+      "question": "Which habit increases the risk of high blood pressure?"
+    },
+    "21": {
+      "answers": [
+        "Low body weight",
+        "Excessive accumulation of body fat",
+        "Lack of vitamins",
+        "Low blood sugar"
+      ],
+      "correctIndex": 1,
+      "question": "What is obesity?"
+    },
+    "22": {
+      "answers": [
+        "Eating more sugary food",
+        "Skipping meals",
+        "Exercising regularly",
+        "Avoiding fruits"
+      ],
+      "correctIndex": 2,
+      "question": "Which action helps reduce the risk of obesity?"
+    },
+    "23": {
+      "answers": [
+        "Excess intake of sugary food",
+        "Low fat intake",
+        "Drinking water",
+        "Eating vegetables"
+      ],
+      "correctIndex": 0,
+      "question": "What is a cause of type 2 diabetes?"
+    },
+    "24": {
+      "answers": [
+        "Leaving food uncovered",
+        "Mixing raw and cooked food",
+        "Cooking food properly",
+        "Storing food in warm places"
+      ],
+      "correctIndex": 2,
+      "question": "Which practice helps prevent food contamination?"
+    },
+    "-Ol7uFckNOTrNpbuL2i9": {
+      "answers": [
+        "Honey",
+        "Sugar",
+        "Rice",
+        "Maple syrup"
+      ],
+      "correctIndex": 2,
+      "question": "Which carbohydrate releases energy more slowly?"
+    },
+    "-Ol7uFckNOTrNpbuL2iA": {
+      "answers": [
+        "Beans",
+        "Lentils",
+        "Egg",
+        "Nuts"
+      ],
+      "correctIndex": 2,
+      "question": "Which of the following is NOT a plant source of protein?"
+    },
+    "-Ol7uFckNOTrNpbuL2iB": {
+      "answers": [
+        "Butter",
+        "Body fat",
+        "Sugar",
+        "Salt"
+      ],
+      "correctIndex": 1,
+      "question": "Which fat helps protect internal organs?"
+    },
+    "-Ol7uFckNOTrNpbuL2iC": {
+      "answers": [
+        "Vitamin A",
+        "Vitamin B",
+        "Vitamin C",
+        "Vitamin D"
+      ],
+      "correctIndex": 2,
+      "question": "Which vitamin helps heal wounds and absorb iron?"
+    },
+    "-Ol7uFckNOTrNpbuL2iD": {
+      "answers": [
+        "Iron",
+        "Calcium",
+        "Sodium",
+        "Vitamin D"
+      ],
+      "correctIndex": 1,
+      "question": "Which mineral helps control muscle contractions?"
+    },
+    "-Ol7uFckNOTrNpbuL2iE": {
+      "answers": [
+        "Fresh fruit",
+        "Milk",
+        "Salted nuts",
+        "Rice"
+      ],
+      "correctIndex": 2,
+      "question": "Which food is high in sodium chloride?"
+    },
+    "-Ol7uFckNOTrNpbuL2iF": {
+      "answers": [
+        "Regulate body temperature",
+        "Remove waste",
+        "Build muscles",
+        "Produce sweat"
+      ],
+      "correctIndex": 2,
+      "question": "Which is NOT a function of water?"
+    },
+    "-Ol7uFckNOTrNpbuL2iG": {
+      "answers": [
+        "Butter",
+        "Dietary fibre",
+        "Sugar",
+        "Salt"
+      ],
+      "correctIndex": 1,
+      "question": "Which food helps prevent constipation?"
+    },
+    "-Ol7uFckNOTrNpbuL2iH": {
+      "answers": [
+        "Eating more fatty food",
+        "Using olive oil",
+        "Skipping exercise",
+        "Eating salty snacks"
+      ],
+      "correctIndex": 1,
+      "question": "Which habit helps reduce the risk of coronary heart disease?"
+    },
+    "-Ol7uFckNOTrNpbuL2iI": {
+      "answers": [
+        "Keeping food uncovered",
+        "Mixing raw and cooked food",
+        "Cleaning equipment thoroughly",
+        "Storing food in warm places"
+      ],
+      "correctIndex": 2,
+      "question": "Which practice helps prevent food contamination?"
+    }
+  },
+  "quizzes": {
+    "scene_1": {
+      "q1": {
+        "correctAnswer": "B",
+        "options": {
+          "A": "Carbohydrate",
+          "B": "Protein",
+          "C": "Dietary Fibre",
+          "D": "Fats"
+        },
+        "question": "What are the nutritions that cannot be absorb by the body?"
+      }
+    }
+  },
+  "userProgress": {
+    "user_001": {
+      "lastSavedAt": "2026-02-08T13:26:40",
+      "lastScene": 3
+    }
+  },
+  "users": {
+    "0kkuHAiBXTVwwqROHpwB2QlkRmP2": {
+      "email": "abcd@gmail.com",
+      "points": 0,
+      "username": "abcd"
+    },
+    "4KyBQNkrqTaHCTHVZgpel8wISkm1": {
+      "email": "jay@gmail.com",
+      "points": 0,
+      "username": "xnoyt"
+    },
+    "9568NC1AJtRq1giCOQeIfgZGqZH3": {
+      "email": "tzlee@tzlee.com",
+      "points": 0,
+      "username": "cheerrrr"
+    },
+    "FmOri0EbCNNQlxL8qo5AsuZWy2z2": {
+      "email": "gg@gg.gg",
+      "points": 17600,
+      "username": "Mr GG"
+    },
+    "GRdK2eT1XeUfX51RlnLQxLUhnVH2": {
+      "email": "ooika6228u@gmail.com",
+      "points": 2700,
+      "username": "CuteBunnyUwU"
+    },
+    "P91T1OkWFITcPk1wDVbuPFz0FBm2": {
+      "email": "myf@gmail.com",
+      "points": 400,
+      "username": "Mayfan"
+    },
+    "UiCeRVO3TEa6BGJrHt0vQYVxkmj2": {
+      "email": "abc@def.gh",
+      "points": 0,
+      "username": "VR Test"
+    },
+    "awUNoGLZcfNAk4VblgWhYlIjvUA3": {
+      "email": "john@gmail.com",
+      "points": 700,
+      "username": "john"
+    },
+    "uUMTcW2VffeQmuoOojii6qcyJt93": {
+      "email": "111@gmail.com",
+      "points": 300,
+      "username": "Wwww"
+    },
+    "user_001": {
+      "currentScene": 2,
+      "email": "player1@email.com",
+      "password": "password_here",
+      "username": "playerOne"
+    }
+  }
+}
