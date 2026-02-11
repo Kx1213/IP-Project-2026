@@ -91901,8 +91901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2188a3268e7d048a4903ddfcbb72cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introLine: Class Begins
-  buttonAppearDelay: 1.5
+  startScreen: {fileID: 0}
   panel: {fileID: 2018044116}
   mainText: {fileID: 5974713360642125454}
   feedbackText: {fileID: 9070954339873414448}
