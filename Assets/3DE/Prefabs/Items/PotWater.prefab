@@ -238,6 +238,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3938730031994290369, guid: 0a526d0e32aaac6498570f3f72abb69d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3938730031994290369, guid: 0a526d0e32aaac6498570f3f72abb69d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.65526885
+      objectReference: {fileID: 0}
+    - target: {fileID: -3938730031994290369, guid: 0a526d0e32aaac6498570f3f72abb69d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3938730031994290369, guid: 0a526d0e32aaac6498570f3f72abb69d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432173099711550085, guid: 0a526d0e32aaac6498570f3f72abb69d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 432173099711550085, guid: 0a526d0e32aaac6498570f3f72abb69d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.085238814
+      objectReference: {fileID: 0}
+    - target: {fileID: 432173099711550085, guid: 0a526d0e32aaac6498570f3f72abb69d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432173099711550085, guid: 0a526d0e32aaac6498570f3f72abb69d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0a526d0e32aaac6498570f3f72abb69d, type: 3}
       propertyPath: m_Name
       value: PotWater
