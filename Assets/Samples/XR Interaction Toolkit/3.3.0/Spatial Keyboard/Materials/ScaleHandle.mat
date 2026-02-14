@@ -146,6 +146,7 @@ Material:
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!114 &6053451986355535352
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -159,5 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 10
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

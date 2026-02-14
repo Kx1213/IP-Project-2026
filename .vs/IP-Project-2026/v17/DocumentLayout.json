@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\IP-Project-2026\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A42BA42C-C906-56CC-810B-1DAB1A6F9848}|Assembly-CSharp.csproj|d:\\ip-project-2026\\assets\\scripts\\quizuicontrollerfirebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A42BA42C-C906-56CC-810B-1DAB1A6F9848}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\quizuicontrollerfirebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A11ED8F7-EFFB-C072-E2F3-C0D59C581C29}|Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj|d:\\ip-project-2026\\assets\\samples\\xr interaction toolkit\\3.3.0\\starter assets\\scripts\\gazeinputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A11ED8F7-EFFB-C072-E2F3-C0D59C581C29}|Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj|solutionrelative:assets\\samples\\xr interaction toolkit\\3.3.0\\starter assets\\scripts\\gazeinputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,6 +23,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "QuizUIControllerFirebase.cs",
+              "DocumentMoniker": "D:\\IP-Project-2026\\Assets\\Scripts\\QuizUIControllerFirebase.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\QuizUIControllerFirebase.cs",
+              "ToolTip": "D:\\IP-Project-2026\\Assets\\Scripts\\QuizUIControllerFirebase.cs",
+              "RelativeToolTip": "Assets\\Scripts\\QuizUIControllerFirebase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-14T18:52:22.948Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "GazeInputManager.cs",
               "DocumentMoniker": "D:\\IP-Project-2026\\Assets\\Samples\\XR Interaction Toolkit\\3.3.0\\Starter Assets\\Scripts\\GazeInputManager.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\XR Interaction Toolkit\\3.3.0\\Starter Assets\\Scripts\\GazeInputManager.cs",

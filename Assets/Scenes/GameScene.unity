@@ -18161,14 +18161,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274669629}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 11.875}
-  m_LocalScale: {x: 0.09027701, y: 0.059515424, z: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 5.937561}
+  m_LocalScale: {x: 0.090277016, y: 0.059515424, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 508041665}
-  m_Father: {fileID: 1267680080}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 486822357}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -28764,6 +28764,43 @@ Transform:
   - {fileID: 998347895}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &486822356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 486822357}
+  m_Layer: 5
+  m_Name: Quiz
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &486822357
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486822356}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -664.87256}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 274669630}
+  - {fileID: 2018044117}
+  m_Father: {fileID: 7214609878286323687}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 260.91003, y: -292.84}
+  m_SizeDelta: {x: 9.02771, y: 5.951538}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &488618102
 GameObject:
   m_ObjectHideFlags: 0
@@ -34860,8 +34897,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8755774237424277870}
-        m_TargetAssemblyTypeName: QuizUIController, Assembly-CSharp
+      - m_Target: {fileID: 1491135994}
+        m_TargetAssemblyTypeName: QuizController, Assembly-CSharp
         m_MethodName: StartQuiz
         m_Mode: 1
         m_Arguments:
@@ -47654,14 +47691,14 @@ RectTransform:
   m_GameObject: {fileID: 787591038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1044, y: 2.32089, z: 1}
+  m_LocalScale: {x: 1.3320168, y: 2.6993756, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1372872181955162038}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.300003, y: -31}
+  m_AnchoredPosition: {x: 20, y: -32}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &787591041
@@ -72015,43 +72052,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 275822960828188499, guid: bcc1f19234b523948b0e621a59e0cdb3, type: 3}
   m_PrefabInstance: {fileID: 1264985928}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1267680079
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1267680080}
-  m_Layer: 5
-  m_Name: Quiz
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1267680080
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1267680079}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -658.96}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2018044117}
-  - {fileID: 274669630}
-  m_Father: {fileID: 7214609878286323687}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 260.91003, y: -292.84}
-  m_SizeDelta: {x: 9, y: 5.9332886}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1267916562
 GameObject:
   m_ObjectHideFlags: 0
@@ -81918,6 +81918,67 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489920793}
   m_Mesh: {fileID: -6363788868644358087, guid: 56f46cc3d368e104da5bf23e41d6a8a3, type: 3}
+--- !u!1 &1491135993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1491135995}
+  - component: {fileID: 1491135994}
+  m_Layer: 0
+  m_Name: QuizController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1491135994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491135993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90786615052b3114a9f9e9c1c7a69075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startScreen: {fileID: 274669629}
+  quizPanel: {fileID: 2018044116}
+  startButton: {fileID: 508041667}
+  questionText: {fileID: 5974713360642125454}
+  feedbackText: {fileID: 9070954339873414448}
+  answerButtons:
+  - {fileID: 5875669345224633492}
+  - {fileID: 3807821583303970628}
+  - {fileID: 7918645167007871709}
+  - {fileID: 5373305301050754738}
+  autoNextDelay: 1
+  questionsPerQuiz: 5
+  pointsPerCorrect: 100
+  doors:
+  - {fileID: 2106810061}
+  - {fileID: 1501939399}
+  instructionUI: {fileID: 203505049139072605}
+--- !u!4 &1491135995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491135993}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.774553, y: 13.26182, z: -23.877121}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1497015105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104744,16 +104805,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018044116}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.000061035156}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 6.07}
   m_LocalScale: {x: 0.09000001, y: 0.05933281, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2858552887328916844}
   - {fileID: 7220431184096220033}
   - {fileID: 3055826061218491133}
-  m_Father: {fileID: 1267680080}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 486822357}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -109290,6 +109351,61 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 275822960828188499, guid: bcc1f19234b523948b0e621a59e0cdb3, type: 3}
   m_PrefabInstance: {fileID: 2076829381}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2080911237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2080911239}
+  - component: {fileID: 2080911238}
+  m_Layer: 0
+  m_Name: AuthManager (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2080911238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080911237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d2256df50148d49b86b8468ec3c5c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loginPanel: {fileID: 3822559215042925596}
+  signUpPanel: {fileID: 5023199281566854319}
+  loginEmailField: {fileID: 992665862559180356}
+  loginPasswordField: {fileID: 7658080508650076980}
+  loginErrorText: {fileID: 4494927943627509238}
+  signUpUsernameField: {fileID: 3360129112408448730}
+  signUpEmailField: {fileID: 4118470679802307023}
+  signUpPasswordField: {fileID: 1446044834722992214}
+  signUpErrorText: {fileID: 1012130217560477250}
+  doorController: {fileID: 2133775718}
+  instructionUI: {fileID: 203505049139072605}
+--- !u!4 &2080911239
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080911237}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.07137442, y: 19.699284, z: -16.581444}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2084287422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111887,7 +112003,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.875, y: 2.399512, z: 0.0039176554}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 4088632197870999224}
+  - {fileID: 9097401327570814181}
+  - {fileID: 8634921806309380091}
+  - {fileID: 4905844669206728676}
+  - {fileID: 3722792288556596558}
+  - {fileID: 4552392668433865916}
   m_Father: {fileID: 9211429986884649051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -111909,6 +112031,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 570470169}
   instructionText: {fileID: 3799345319071297676}
+  authManager: {fileID: 2080911238}
+  quizController: {fileID: 1491135994}
 --- !u!114 &207451639175142432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111983,7 +112107,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.2482119, y: 2.2482119, z: 2.2482119}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3727872646950345998}
+  - {fileID: 8619912898104593436}
+  - {fileID: 5855875218857181991}
+  - {fileID: 3722989397125298571}
+  - {fileID: 4317007042047263314}
   m_Father: {fileID: 8666737005067681334}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -112099,7 +112228,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3419830451371387004}
+      - m_Target: {fileID: 2080911238}
         m_TargetAssemblyTypeName: AuthenticationManager, Assembly-CSharp
         m_MethodName: Login
         m_Mode: 1
@@ -113333,7 +113462,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3419830451371387004}
+      - m_Target: {fileID: 2080911238}
         m_TargetAssemblyTypeName: AuthenticationManager, Assembly-CSharp
         m_MethodName: ShowLoginPanel
         m_Mode: 1
@@ -113608,7 +113737,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &2595709101071916390
 GameObject:
   m_ObjectHideFlags: 0
@@ -114072,7 +114201,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3419830451371387004}
+      - m_Target: {fileID: 2080911238}
         m_TargetAssemblyTypeName: AuthenticationManager, Assembly-CSharp
         m_MethodName: SignUp
         m_Mode: 1
@@ -115061,8 +115190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60dd128f4be43e44ba863538dae4e243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loginPanel: {fileID: 4792264789243850374}
-  signUpPanel: {fileID: 4089960339059642607}
+  loginParent: {fileID: 4792264789243850374}
+  signUpParent: {fileID: 4089960339059642607}
   loginEmailInput: {fileID: 992665862559180356}
   loginPasswordInput: {fileID: 7658080508650076980}
   loginErrorText: {fileID: 4494927943627509238}
@@ -115071,6 +115200,7 @@ MonoBehaviour:
   signUpPasswordInput: {fileID: 1446044834722992214}
   signUpErrorText: {fileID: 1012130217560477250}
   door: {fileID: 2133775718}
+  instructionUI: {fileID: 203505049139072605}
 --- !u!222 &3445637827614540318
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -115182,17 +115312,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3652366717855985342}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7658406, y: 1.0088, z: 1.0088}
+  m_LocalScale: {x: 0.40844828, y: 0.4204188, z: 257.50095}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1618456892790038972}
-  m_Father: {fileID: 9211429986884649051}
+  m_Father: {fileID: 74355612720456724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.1, y: -122.5}
+  m_AnchoredPosition: {x: -0.053613283, y: -38.04928}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &3722989397125298571
@@ -115202,17 +115332,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3020857823875579426}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7658406, y: 1.0088, z: 1.0088}
+  m_LocalScale: {x: 0.3406443, y: 0.44871214, z: 0.44871214}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9112015122103325181}
-  m_Father: {fileID: 8666737005067681334}
+  m_Father: {fileID: 370203715267997554}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.1, y: -105.6}
+  m_AnchoredPosition: {x: -0.044685315, y: -33.092964}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &3727872646950345998
@@ -115222,16 +115352,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679527619096419009}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.44479793, y: 0.44479793, z: 0.44479793}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8666737005067681334}
+  m_Father: {fileID: 370203715267997554}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13.9, y: -36.8}
+  m_AnchoredPosition: {x: 6.1827526, y: -2.4906425}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3798146855280175500
@@ -115331,7 +115461,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -41.6567, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -115428,12 +115558,12 @@ GameObject:
   - component: {fileID: 1582197758804799439}
   - component: {fileID: 8755774237424277870}
   m_Layer: 0
-  m_Name: QuizController
+  m_Name: QuizController1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &3874643898509869473
 GameObject:
   m_ObjectHideFlags: 0
@@ -115634,14 +115764,14 @@ RectTransform:
   m_GameObject: {fileID: 8433078140511819090}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5333333, y: 0.41675138, z: 255.25473}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 9211429986884649051}
+  m_Father: {fileID: 74355612720456724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13.700203, y: -20.800165}
+  m_AnchoredPosition: {x: 7.306567, y: 4.334261}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4089960339059642607
@@ -115878,16 +116008,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4341184605388829675}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1098256, y: 0.8197967, z: 1.4619126}
+  m_LocalScale: {x: 0.4936481, y: 0.36464384, z: 0.6502557}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8666737005067681334}
+  m_Father: {fileID: 370203715267997554}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.1, y: -74.7}
+  m_AnchoredPosition: {x: -0.044685315, y: -19.348663}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4341184605388829675
@@ -116078,17 +116208,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5918656111516907971}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7406025, y: 2.2928007, z: 2.2928007}
+  m_LocalScale: {x: 0.9283213, y: 0.95552784, z: 585.24817}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8280548613815237506}
-  m_Father: {fileID: 9211429986884649051}
+  m_Father: {fileID: 74355612720456724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.1, y: -88.2}
+  m_AnchoredPosition: {x: -0.053613283, y: -23.754753}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4687559980665006499
@@ -116277,15 +116407,15 @@ RectTransform:
   m_GameObject: {fileID: 678214505380402591}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0750247, y: 0.7883779, z: 0.74134856}
+  m_LocalScale: {x: 0.57334644, y: 0.32855755, z: 189.23273}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2271094637636209781}
-  m_Father: {fileID: 9211429986884649051}
+  m_Father: {fileID: 74355612720456724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.8, y: -19.5}
+  m_AnchoredPosition: {x: 0.42646486, y: 4.8761005}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &4914032772407457400
@@ -116774,15 +116904,15 @@ RectTransform:
   m_GameObject: {fileID: 3585577151321490137}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.07036, y: 0.70996803, z: 0.70996803}
+  m_LocalScale: {x: 0.4760939, y: 0.31579232, z: 0.31579232}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 473226878308941748}
-  m_Father: {fileID: 8666737005067681334}
+  m_Father: {fileID: 370203715267997554}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -37.2}
+  m_AnchoredPosition: {x: 0, y: -2.668705}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5856349968955369780
@@ -116894,7 +117024,7 @@ GameObject:
   - component: {fileID: 6880666791165801871}
   - component: {fileID: 3108015410014329047}
   m_Layer: 5
-  m_Name: Login Button
+  m_Name: Sign Up Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117319,7 +117449,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3419830451371387004}
+      - m_Target: {fileID: 2080911238}
         m_TargetAssemblyTypeName: AuthenticationManager, Assembly-CSharp
         m_MethodName: ShowSignUpPanel
         m_Mode: 1
@@ -117533,7 +117663,7 @@ RectTransform:
   m_Children:
   - {fileID: 8666737005067681334}
   - {fileID: 9211429986884649051}
-  - {fileID: 1267680080}
+  - {fileID: 486822357}
   - {fileID: 1928412684}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -118453,15 +118583,15 @@ RectTransform:
   m_GameObject: {fileID: 860706839760542119}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.07036, y: 0.70996803, z: 0.70996803}
+  m_LocalScale: {x: 0.4760939, y: 0.31579232, z: 0.31579232}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7600335686012791265}
-  m_Father: {fileID: 8666737005067681334}
+  m_Father: {fileID: 370203715267997554}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2}
+  m_AnchoredPosition: {x: 0, y: 14.767511}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &8634921806309380091
@@ -118473,15 +118603,15 @@ RectTransform:
   m_GameObject: {fileID: 682451952855287963}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0750247, y: 0.7883779, z: 0.74134856}
+  m_LocalScale: {x: 0.57334644, y: 0.32855755, z: 189.23273}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5710737451098758182}
-  m_Father: {fileID: 9211429986884649051}
+  m_Father: {fileID: 74355612720456724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.8, y: -54.7}
+  m_AnchoredPosition: {x: 0.42646486, y: -9.794113}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8661969935324209085
@@ -118515,11 +118645,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 370203715267997554}
-  - {fileID: 3727872646950345998}
-  - {fileID: 8619912898104593436}
-  - {fileID: 5855875218857181991}
-  - {fileID: 3722989397125298571}
-  - {fileID: 4317007042047263314}
   m_Father: {fileID: 7214609878286323687}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -118594,11 +118719,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2188a3268e7d048a4903ddfcbb72cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScreen: {fileID: 274669629}
   panel: {fileID: 2018044116}
   mainText: {fileID: 5974713360642125454}
   feedbackText: {fileID: 9070954339873414448}
-  startButton: {fileID: 508041667}
   answerButtons:
   - {fileID: 5875669345224633492}
   - {fileID: 7918645167007871709}
@@ -118611,6 +118734,12 @@ MonoBehaviour:
   - {fileID: 2106810061}
   - {fileID: 1501939399}
   instructionUI: {fileID: 203505049139072605}
+  allQuestions: []
+  quizQuestions: []
+  current: 0
+  score: 0
+  earnedPoints: 0
+  answered: 0
 --- !u!1 &8774706598724227215
 GameObject:
   m_ObjectHideFlags: 0
@@ -119504,15 +119633,15 @@ RectTransform:
   m_GameObject: {fileID: 8418881700044583500}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0750247, y: 0.7883779, z: 0.74134856}
+  m_LocalScale: {x: 0.57334644, y: 0.32855755, z: 189.23273}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8234571478405757709}
-  m_Father: {fileID: 9211429986884649051}
+  m_Father: {fileID: 74355612720456724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.8, y: 14.3}
+  m_AnchoredPosition: {x: 0.42646486, y: 18.962507}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &9112015122103325181
@@ -119547,7 +119676,7 @@ GameObject:
   - component: {fileID: 3799345319071297676}
   - component: {fileID: 203505049139072605}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Instruction Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119684,12 +119813,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 74355612720456724}
-  - {fileID: 4088632197870999224}
-  - {fileID: 9097401327570814181}
-  - {fileID: 8634921806309380091}
-  - {fileID: 4905844669206728676}
-  - {fileID: 3722792288556596558}
-  - {fileID: 4552392668433865916}
   m_Father: {fileID: 7214609878286323687}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -119748,7 +119871,9 @@ SceneRoots:
   - {fileID: 7214609878286323687}
   - {fileID: 1011029962316082628}
   - {fileID: 5538604254444977756}
+  - {fileID: 2080911239}
   - {fileID: 1582197758804799439}
+  - {fileID: 1491135995}
   - {fileID: 212583573}
   - {fileID: 1417791276}
   - {fileID: 879131961}
