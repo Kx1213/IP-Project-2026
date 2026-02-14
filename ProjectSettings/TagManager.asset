@@ -9,6 +9,7 @@ TagManager:
   - Brush
   - Tray
   - Potato
+  - Peeler
   layers:
   - Default
   - TransparentFX
