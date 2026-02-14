@@ -1,10 +1,19 @@
 # ninja log v5
 27	1081	7925287561865874	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	63f37bbf862783a4
 15	1088	7925287561928824	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	f2404e5ceb45aa00
+39	1281	7925287563876896	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	20939ff477e3cc39
 5	1090	7925287561943830	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	388cd2c8f9f9d6fb
-33	1118	7925287562240735	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	1fe823476a373f4a
 0	1129	7925287562324300	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	299f7469b8c9dd6
+33	1118	7925287562240735	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	1fe823476a373f4a
 21	1201	7925287563076560	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	841c2798a41abda7
 10	1235	7925287563417002	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	bdba356633b2ec3a
-39	1281	7925287563876896	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	20939ff477e3cc39
 1281	1458	7925287565660015	D:/IP-Project-2026/Library/PramData/AndroidApplicationController/Cache/ip.project.qiaomen/gradle-project/unityLibrary/build/intermediates/cxx/Debug/66277062/obj/arm64-v8a/libgame.so	a0a5fad533abfc06
+28	1624	7925923568074657	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	63f37bbf862783a4
+14	1627	7925923568074657	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	388cd2c8f9f9d6fb
+4	1636	7925923568190943	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	f2404e5ceb45aa00
+33	1638	7925923568215266	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	1fe823476a373f4a
+22	1661	7925923568463161	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	299f7469b8c9dd6
+38	1738	7925923569165039	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	841c2798a41abda7
+10	1762	7925923569464268	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	bdba356633b2ec3a
+43	1998	7925923571832703	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	20939ff477e3cc39
+1998	2216	7925923574012107	D:/IP-Project-2026/Library/PramData/AndroidApplicationController/Cache/ip.project.qiaomen/gradle-project/unityLibrary/build/intermediates/cxx/Debug/66277062/obj/arm64-v8a/libgame.so	a0a5fad533abfc06

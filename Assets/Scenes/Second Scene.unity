@@ -31371,7 +31371,7 @@ MonoBehaviour:
   OnStepChanged:
     m_PersistentCalls:
       m_Calls: []
-  pointsPerStep: 200
+  bakingInProgress: 0
 --- !u!4 &570470170
 Transform:
   m_ObjectHideFlags: 0
@@ -46715,7 +46715,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecd1d74d27bf034fa720520eb2525b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 570470169}
 --- !u!114 &1107164788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83438,7 +83437,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 570470169}
-  strokesNeeded: 8
+  brushNeeded: 1.5
+  minBrushSpeed: 0.15
+  addPerSecond: 1
 --- !u!65 &2019724527
 BoxCollider:
   m_ObjectHideFlags: 0
