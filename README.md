@@ -75,22 +75,20 @@ Website
 -Provide synchronized
 
 2. Data Types
+
 Explains the choice of data types of each key database node
 
 2.1 Root Structure
 
-Root
-
-|-usrs
-
-|-questions
+    Root
+    |-usrs
+    |-questions
 
 2.2 users Node
 
 users
 
     {uid}
-  
       |-email: string
       |-points: integer
       |-email: string
@@ -161,7 +159,7 @@ users
     questions
      |── questionId
           ├── question: strings
-          ├── answers: array of strings
+          ├── answers: array
           |── correctIndex: number
 
 -question (string)
@@ -230,5 +228,97 @@ users
       -Website leaderboard updates automatically when:
         -Unity game updates points
         -Another user finis a quiz
-        
-    
+      This allows
+        -Live ranking system
+        -Multi device synchronization
+        -Realtime competitive experience
+
+  3.2 Transaction Based Updates
+
+  In Unity:
+
+  pointsRef.RunTransaction(...)
+
+  Why:
+    -Safe for multiple simulataneous users
+
+  Without this:
+    -Two users finishing at the same time could overwrite each other
+
+4. Application Data Flow
+
+4.1 User Registration Flow
+
+Trigger:
+
+User presses "Register" button on website or "Sign up" button on the unity
+
+Website Sign Up Flow
+
+    1. auth.createUserWithEmailAndPassword() is called
+    2. Firebase Authentication
+      -Creates user account
+      -Generates unique UID
+    3. Website write to :
+    users
+      |-{uid}
+    Storing
+        |-email:
+        |-points:
+        |-username:
+Unity Sign Up Flow (AuthManager.cs)
+
+    1. CreateUserWithEmailAndPasswordAsync() is executed
+    2. AuthManager write to :
+    users
+      |-{uid}
+    Storing
+        |-email:
+        |-points:
+        |-username:
+    3. Signup panel hides 
+    4. Door is unlocked
+    5. Instruction UI change to "Go To Quiz Room"
+
+4.2 Log In Flow
+
+Website Log In Flow
+
+    1. auth.signInWithEmailAndPassword() is called
+    2. Firebase validates credentials
+    3. If successful
+      - auth.onAuthStateChanged() triggers
+      - Login panel hides
+      - Shows user profile
+
+Unity Log In Flow (AuthManager.cs)
+
+    1. SignInWithEmailAndPasswordAsync() is executed
+    2. Login panel hidden
+    3. Door is unlocked
+    4. Instruction UI change to "Walk into the room on your right to take the quiz."
+
+4.3 Question Retrieval Flow (QuizManager.cs)
+
+When Unity runs: LoadQuestionsFromRealtimeDB()
+
+    1. GetReference("questions"). GetValueAsync()
+    2. Firebase returns full snapshot
+    3. For each child
+      -Read question
+      -Read correctIndex
+      -Loop Through answers
+    4. Create Question object
+    5. Store inside allQuestions list
+
+4.4 Quiz Execution Flow
+
+When user enters quiz room：
+
+    1. Quiz panel is there
+    2. 5 random questions selected from all questions
+    3. User selects answer
+    4. If correct
+      -earnedPoints += pointsPerCorrect
+    5. After all questions
+      - FinishQuiz() executed
