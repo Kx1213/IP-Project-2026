@@ -322,3 +322,63 @@ When user enters quiz room：
       -earnedPoints += pointsPerCorrect
     5. After all questions
       - FinishQuiz() executed
+4.5 Score Saving Flow 
+
+    Inside SavePointsToFirebase()
+    First get current user's UID
+    Then Reference users/{uid}/points
+    and execute RunTransaction()
+    Transaction logic:
+      -Read current points
+      -Add earnedPoints
+      -Write updated value back 
+    Why this is important
+    -Multiple devices cannot overwrite each other
+
+4.6 Realtime Leaderboard flow (Website)
+
+In the html script
+
+  db.ref("users").on("value", snap => {
+
+      How this works
+      1. Firebase monitors "users" node.
+      2. Any change in points triggers automatic update.
+      3.Web receives snapshot instantly.
+      4.Users sorted:       .sort((a,b) => (b.points||0) - (a.points||0))
+      5.Leaderboard re-rendered dynamically
+Hence
+
+-No refresh required
+
+-When unity updates point website leaderboard updates instantly
+
+5. Application Workflow & User Interaction
+
+       Step 1 - Login Required
+         -Door locked
+         -Instruction:"Please login or sign up to start."
+         -User authenticates
+       Step 2  - Quiz Room Access
+         -Quiz room front door unlocks
+         -Instruction: "Walk into the room on your right to take the quiz."
+         -Enter and start quiz
+       Step 3 - Complete Quiz
+         -Answering quiz
+         -Score calculated
+         -Points awarded
+       Step 4 - Points Stored
+         -Transaction updated
+         -Leaderboard instantly updates on website at the mean time
+         -Back door of quiz room and practical room front door unlock
+       Step 5 - Cooking Simulation
+         -Instruction UI Switches to the cooking steps
+         -User Completes:
+           -Preheat oven
+           -Scrub potato
+           -Slice potato
+           -Brush Oil
+           -Add Salt
+           -Bake
+           -Serve
+         -All steps guided dynamically
