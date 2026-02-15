@@ -30,20 +30,13 @@ public class AuthManager : MonoBehaviour
     private FirebaseAuth auth;
     private DatabaseReference dbRef;
 
-    private async void Awake()
-    {
-        // Auto-assign InstructionUI if missing
-        if (instructionUI == null)
-            instructionUI = FindObjectOfType<InstructionUI>();
-    }
-
     private async void Start()
     {
         await InitializeFirebase();
 
-        if (auth.CurrentUser != null)
+        if (auth != null && auth.CurrentUser != null)
         {
-            // Already logged in
+            Debug.Log("[AuthManager] User already logged in: " + auth.CurrentUser.Email);
             loginPanel.SetActive(false);
             signUpPanel.SetActive(false);
             doorController.UnlockDoor();
@@ -63,6 +56,7 @@ public class AuthManager : MonoBehaviour
         {
             auth = FirebaseAuth.DefaultInstance;
             dbRef = FirebaseDatabase.DefaultInstance.RootReference;
+            Debug.Log("[AuthManager] Firebase initialized successfully.");
         }
         else
         {
@@ -70,6 +64,7 @@ public class AuthManager : MonoBehaviour
         }
     }
 
+    // Panel switching
     public void ShowLoginPanel()
     {
         ClearErrors();
@@ -89,9 +84,20 @@ public class AuthManager : MonoBehaviour
         if (loginErrorText) loginErrorText.text = "";
         if (signUpErrorText) signUpErrorText.text = "";
     }
-
-    public async void Login()
+    public void OnLoginButtonPressed()
     {
+        _ = Login();
+    }
+
+    public void OnSignUpButtonPressed()
+    {
+        _ = SignUp();
+    }
+
+    // Login
+    private async Task Login()
+    {
+        Debug.Log("[AuthManager] Login button pressed.");
         ClearErrors();
 
         string email = loginEmailField.text.Trim();
@@ -108,6 +114,8 @@ public class AuthManager : MonoBehaviour
             var authResult = await auth.SignInWithEmailAndPasswordAsync(email, password);
             FirebaseUser user = authResult.User;
 
+            Debug.Log("[AuthManager] Login success: " + user.Email);
+
             loginPanel.SetActive(false);
             signUpPanel.SetActive(false);
             doorController.UnlockDoor();
@@ -115,12 +123,15 @@ public class AuthManager : MonoBehaviour
         }
         catch (FirebaseException e)
         {
+            Debug.LogError("[AuthManager] Login failed: " + e.Message);
             loginErrorText.text = GetFirebaseErrorMessage(e);
         }
     }
 
-    public async void SignUp()
+    // SignUp
+    private async Task SignUp()
     {
+        Debug.Log("[AuthManager] SignUp button pressed.");
         ClearErrors();
 
         string username = signUpUsernameField.text.Trim();
@@ -138,6 +149,8 @@ public class AuthManager : MonoBehaviour
             var authResult = await auth.CreateUserWithEmailAndPasswordAsync(email, password);
             FirebaseUser newUser = authResult.User;
 
+            Debug.Log("[AuthManager] SignUp success: " + newUser.Email);
+
             UserProfile profile = new UserProfile { DisplayName = username };
             await newUser.UpdateUserProfileAsync(profile);
 
@@ -153,10 +166,12 @@ public class AuthManager : MonoBehaviour
         }
         catch (FirebaseException e)
         {
+            Debug.LogError("[AuthManager] SignUp failed: " + e.Message);
             signUpErrorText.text = GetFirebaseErrorMessage(e);
         }
     }
 
+    //Proper user error messages
     private string GetFirebaseErrorMessage(FirebaseException e)
     {
         AuthError errorCode = (AuthError)e.ErrorCode;
@@ -171,6 +186,7 @@ public class AuthManager : MonoBehaviour
         };
     }
 
+    //Was trying to fix some bugs here
     [System.Serializable]
     public class UserData
     {

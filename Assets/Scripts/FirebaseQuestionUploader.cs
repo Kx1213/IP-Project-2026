@@ -86,7 +86,7 @@ public class RealtimeExtraQuestionUploader : MonoBehaviour
             { "correctIndex", 2 }
         });
 
-        // PUSH questions so existing ones are NOT overwritten
+        // Push questions so existing ones will not be overwritten
         foreach (var q in extraQuestions)
         {
             db.Child("questions").Push().SetValueAsync(q);

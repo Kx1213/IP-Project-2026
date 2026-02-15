@@ -44,16 +44,13 @@ public class QuizController : MonoBehaviour
     private bool quizEnded = false;
     private bool answered = false;
 
-    // =========================
-    // 1️⃣ START
-    // =========================
     async void Start()
     {
         startScreen.SetActive(true);
         quizPanel.SetActive(false);
         startButton.interactable = false;
 
-        LockAllDoors();
+        LockAllDoors();//Lock Door when game start
 
         var dependencyStatus = await FirebaseApp.CheckAndFixDependenciesAsync();
         if (dependencyStatus == DependencyStatus.Available)
@@ -61,7 +58,7 @@ public class QuizController : MonoBehaviour
             auth = FirebaseAuth.DefaultInstance;
             dbRef = FirebaseDatabase.DefaultInstance.RootReference;
 
-            LoadQuestionsFromRealtimeDB();
+            LoadQuestionsFromRealtimeDB();//Retrieve questions from firebase when game start
         }
         else
         {
@@ -69,9 +66,7 @@ public class QuizController : MonoBehaviour
         }
     }
 
-    // =========================
-    // 2️⃣ LOAD QUESTIONS
-    // =========================
+
     void LoadQuestionsFromRealtimeDB()
     {
         FirebaseDatabase.DefaultInstance
@@ -108,9 +103,7 @@ public class QuizController : MonoBehaviour
             });
     }
 
-    // =========================
-    // 3️⃣ START QUIZ
-    // =========================
+//Function for the start button to start the quiz
     public void StartQuiz()
     {
         if (allQuestions.Count < questionsPerQuiz)
@@ -137,9 +130,7 @@ public class QuizController : MonoBehaviour
         ShowQuestion();
     }
 
-    // =========================
-    // 4️⃣ SHOW QUESTION
-    // =========================
+//Shows on the question text
     void ShowQuestion()
     {
         if (currentQuestionIndex >= selectedQuestions.Count)
@@ -166,9 +157,7 @@ public class QuizController : MonoBehaviour
         }
     }
 
-    // =========================
-    // 5️⃣ SELECT ANSWER
-    // =========================
+//Handling the choosing option part here
     public void SelectAnswer(int chosen)
     {
         if (answered) return;
@@ -196,18 +185,12 @@ public class QuizController : MonoBehaviour
         Invoke(nameof(NextQuestion), autoNextDelay);
     }
 
-    // =========================
-    // 6️⃣ NEXT QUESTION
-    // =========================
     void NextQuestion()
     {
         currentQuestionIndex++;
         ShowQuestion();
     }
 
-    // =========================
-    // 7️⃣ FINISH QUIZ
-    // =========================
     void FinishQuiz()
     {
         quizEnded = true;
@@ -217,7 +200,7 @@ public class QuizController : MonoBehaviour
             btn.gameObject.SetActive(false);
         }
 
-        // Display final result in questionText instead
+        // Display final result in Question Text
         questionText.text =
             $"QUIZ COMPLETED!\n\n" +
             $"Score: {score}/{questionsPerQuiz}\n" +
@@ -240,9 +223,6 @@ public class QuizController : MonoBehaviour
         quizPanel.SetActive(false);
     }
 
-    // =========================
-    // 8️⃣ SAVE POINTS
-    // =========================
     void SavePointsToFirebase()
     {
         if (auth.CurrentUser == null)
@@ -267,9 +247,6 @@ public class QuizController : MonoBehaviour
         });
     }
 
-    // =========================
-    // DOOR CONTROL
-    // =========================
     void LockAllDoors()
     {
         foreach (var door in doors)
@@ -287,9 +264,6 @@ public class QuizController : MonoBehaviour
     }
 }
 
-// =========================
-// QUESTION CLASS
-// =========================
 [System.Serializable]
 public class Question
 {

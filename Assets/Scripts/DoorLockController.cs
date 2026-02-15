@@ -16,15 +16,11 @@ public class DoorLockController : MonoBehaviour
         if (!hinge) hinge = GetComponent<HingeJoint>();
         if (!grabInteractable) grabInteractable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
 
-        // Save locked hinge state (door cannot rotate)
+        // Door cannot rotate
         lockedLimits = hinge.limits;
         lockedLimits.min = 0f;
         lockedLimits.max = 0f;
     }
-
-    // =======================
-    // LOCK / UNLOCK
-    // =======================
 
     public void LockDoor()
     {
@@ -32,7 +28,7 @@ public class DoorLockController : MonoBehaviour
         if (grabInteractable)
             grabInteractable.enabled = false;
 
-        // Freeze door completely
+        // Freeze door in rigidbody
         if (rb)
         {
             rb.linearVelocity = Vector3.zero;
@@ -54,13 +50,13 @@ public class DoorLockController : MonoBehaviour
         if (grabInteractable)
             grabInteractable.enabled = true;
 
-        // Unfreeze door (allow hinge movement)
+        // Unfreeze door 
         if (rb)
         {
             rb.constraints = RigidbodyConstraints.None;
         }
 
-        // Restore hinge rotation
+        // Unlock hinge rotation
         if (hinge)
         {
             hinge.useLimits = false;

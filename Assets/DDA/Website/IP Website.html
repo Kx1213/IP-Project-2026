@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <title>Firebase Login, Profile & Leaderboard</title>
 
-  <!--Importing Firebase SDK for the website here  -->
+  <!-- Firebase SDKs (v8) -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-</head>
- <style>
+
+  <style>
     * {
       box-sizing: border-box;
       font-family: "Segoe UI", Roboto, Arial, sans-serif;
@@ -19,7 +19,7 @@
       margin: 0;
       padding: 40px;
 
-      /* Background image is here*/
+      /* ===== BACKGROUND IMAGE ===== */
       background: url("Website Background.jpg") no-repeat center center fixed;
       background-size: cover;
 
@@ -46,6 +46,7 @@
       color: #5a3e27;
     }
 
+    /* Header */
     .header {
       display: flex;
       align-items: center;
@@ -62,6 +63,7 @@
       height: 50px;
     }
 
+    /* Flex container for login + leaderboard */
     .main-container {
       display: flex;
       gap: 40px;
@@ -127,6 +129,7 @@
       color: #b78e55;
     }
 
+    /* Leaderboard */
     ol {
       padding-left: 0;
       margin: 0;
@@ -170,17 +173,21 @@
       }
     }
   </style>
+</head>
+
 <body>
 
-<!-- Logo and title is here -->
+<!-- Header -->
 <div class="header">
   <img src="logo.png" alt="Logo">
   <h1>COOKED</h1>
 </div>
 
+<!-- Main panels -->
 <div class="main-container">
 
-  <div id="login" style="display:block;">
+  <!-- Login -->
+  <div id="login">
     <h2>Login / Register</h2>
     <input id="loginEmail" type="email" placeholder="Email">
     <input id="loginPassword" type="password" placeholder="Password">
@@ -190,16 +197,7 @@
     <p id="loginStatus"></p>
   </div>
 
-  <div id="profile" style="display:none;">
-    <h2>Welcome</h2>
-    <p id="profileInfo"></p>
-
-    <input id="newUsername" type="text" placeholder="Enter new username">
-    <button onclick="changeUsername()">Change Username</button>
-
-    <button onclick="logout()">Logout</button>
-  </div>
-
+  <!-- Leaderboard -->
   <div class="leaderboard-box">
     <h2>Leaderboard</h2>
     <ol id="leaderboardList"></ol>
@@ -222,17 +220,6 @@
   const auth = firebase.auth();
   const db = firebase.database();
 
-  //Cache DOM elements
-  const loginDiv = document.getElementById("login");
-  const profileDiv = document.getElementById("profile");
-  const profileInfo = document.getElementById("profileInfo");
-  const loginEmail = document.getElementById("loginEmail");
-  const loginPassword = document.getElementById("loginPassword");
-  const loginStatus = document.getElementById("loginStatus");
-  const leaderboardList = document.getElementById("leaderboardList");
-  const newUsernameInput = document.getElementById("newUsername");
-
-  //Sign up function is here
   function register() {
     auth.createUserWithEmailAndPassword(loginEmail.value, loginPassword.value)
       .then(res => db.ref("users/" + res.user.uid).set({
@@ -243,70 +230,36 @@
       .then(() => loginStatus.textContent = "Registered successfully!")
       .catch(err => loginStatus.textContent = err.message);
   }
-  //Login function here here 
+
   function login() {
     auth.signInWithEmailAndPassword(loginEmail.value, loginPassword.value)
       .catch(err => loginStatus.textContent = err.message);
   }
-//forgot password
+
   function forgotPassword() {
     if (!loginEmail.value) return alert("Enter your email first");
     auth.sendPasswordResetEmail(loginEmail.value)
       .then(() => alert("Password reset email sent!"))
       .catch(err => alert(err.message));
   }
-//logging out
+
   function logout() {
     auth.signOut();
   }
-//change username after logging in
-  function changeUsername() {
-    const user = auth.currentUser;
-    if (!user) return alert("You must be logged in to change your username.");
 
-    const newName = newUsernameInput.value.trim();
-    if (!newName) return alert("Please enter a valid username.");
-
-    db.ref("users/" + user.uid).update({ username: newName })
-      .then(() => {
-        alert("Username updated successfully!");
-        newUsernameInput.value = "";
-      })
-      .catch(err => alert(err.message));
-  }
-
-  // Handles showing and hiding for this panels
   auth.onAuthStateChanged(user => {
-    if (user) {
-      loginDiv.style.display = "none";
-      profileDiv.style.display = "block";
-
-      // Listen for changes to this user's data
-      db.ref("users/" + user.uid).on("value", snap => {
-        const userData = snap.val();
-        if (userData) {
-          profileInfo.textContent = `Username: ${userData.username} | Email: ${userData.email}`;
-        } else {
-          profileInfo.textContent = `Logged in as ${user.email}`;
-        }
-      });
-    } else {
-      loginDiv.style.display = "block";
-      profileDiv.style.display = "none";
-      profileInfo.textContent = "";
-    }
+    login.style.display = user ? "none" : "block";
   });
 
-  // Leaderboard
   db.ref("users").on("value", snap => {
     leaderboardList.innerHTML = "";
     const data = snap.val();
-    if (!data) return;
+    if(!data) return;
     Object.values(data)
-      .sort((a, b) => (b.points || 0) - (a.points || 0))
+      .sort((a,b) => (b.points||0) - (a.points||0))
       .forEach(u => {
         const li = document.createElement("li");
-        li.textContent = `${u.username || "Unknown"} - ${u.points || 0} pts`;
+        li.textContent = `${u.username||"Unknown"} - ${u.points||0} pts`;
         leaderboardList.appendChild(li);
       });
   });

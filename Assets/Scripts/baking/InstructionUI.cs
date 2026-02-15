@@ -21,11 +21,7 @@ public class InstructionUI : MonoBehaviour
 
     private void Awake()
     {
-        // Auto-assign references if missing
-        if (instructionText == null) instructionText = GetComponent<TMP_Text>();
-        if (manager == null) manager = FindObjectOfType<CookingStepManager>();
-        if (authManager == null) authManager = FindObjectOfType<AuthManager>();
-        if (quizController == null) quizController = FindObjectOfType<QuizController>();
+
 
         // Error logging for missing components
         if (instructionText == null)
@@ -42,7 +38,6 @@ public class InstructionUI : MonoBehaviour
     {
         if (manager != null) manager.OnStepChanged.AddListener(UpdateInstruction);
 
-        // Hide quiz panel at start
         if (quizController != null && quizController.quizPanel != null)
             quizController.quizPanel.SetActive(false);
 
@@ -72,7 +67,7 @@ public class InstructionUI : MonoBehaviour
                 break;
 
             case InstructionState.GoToQuizRoom:
-                instructionText.text = "Step 1: Walk into the room on your right to take the quiz.";
+                instructionText.text = "Walk into the room on your right to take the quiz.";
                 break;
 
             case InstructionState.CookingSteps:
@@ -81,12 +76,12 @@ public class InstructionUI : MonoBehaviour
                 break;
 
             case InstructionState.Done:
-                instructionText.text = "✅ All tasks completed!";
+                instructionText.text = "All tasks completed!";
                 break;
         }
     }
 
-    // Call from AuthManager after successful login
+    // Call from AuthManager after logging in successfully
     public void OnLoginSuccess()
     {
         currentState = InstructionState.GoToQuizRoom;
@@ -100,7 +95,7 @@ public class InstructionUI : MonoBehaviour
             quizController.quizPanel.SetActive(true);
     }
 
-    // Call from QuizController after quiz completion
+    // Call from QuizController after done with quiz
     public void OnQuizCompleted()
     {
         currentState = InstructionState.CookingSteps;
